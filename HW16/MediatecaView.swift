@@ -10,13 +10,16 @@ import SwiftUI
 struct MediatecaView: View {
     var body: some View {
         NavigationView {
-            VStack{
+            VStack {
+                Spacer()
                 Text("Ищете свою музыку?")
                     .bold()
                     .font(.title)
                 Text("Здесь появится купленная Вами в iTunes Store музыка")
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
+                Spacer()
+                   
 
             }
                 .navigationTitle("Медиатека")
@@ -25,6 +28,7 @@ struct MediatecaView: View {
                                         .foregroundColor(.red))
                
         }
+        
     }
 }
 

@@ -8,27 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    init (){
+        UITabBar.appearance().backgroundColor = .systemBackground
+    }
     var body: some View {
-        TabView {
-            MediatecaView()
-                .tabItem {
-                    Image("music_albums_fill 2")
-                        .renderingMode(.template)
-                    Text("Медиатека")
-                        .foregroundColor(.gray)
-                }
-            Text("Second")
-                        .tabItem {
-                            Image(systemName: "dot.radiowaves.left.and.right")
-                            Text("Радио")
-                        }
-            Text("Second")
-                        .tabItem {
-                            Image(systemName: "magnifyingglass")
-                            Text("Поиск")
-                        }
-                
+        ZStack(alignment: .bottom) {
+            TabView {
+                MediatecaView()
+                    .tabItem {
+                        Image("music_albums_fill 2")
+                            .renderingMode(.template)
+                        Text("Медиатека")
+                    }
+                Text("Second")
+                    .tabItem {
+                        Image(systemName: "dot.radiowaves.left.and.right")
+                        Text("Радио")
+                    }
+                Text("Third")
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
+                        Text("Поиск")
+                    }
+            }
+            PlayerView()
+                .padding(.bottom, 49.0)
+            
+            
         }
+        
     }
 }
 
