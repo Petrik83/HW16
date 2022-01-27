@@ -17,12 +17,17 @@ struct Item {
 extension Item: Hashable, Identifiable {
     static func getData() -> [Item] {
         return [
-            Item(icon: "play", title: "play"),
-            Item(icon: "pause", title: "pause1"),
-            Item(icon: "pause", title: "pause2"),
-            Item(icon: "pause", title: "pause3"),
-            Item(icon: "pause", title: "pause4"),
-            Item(icon: "pause", title: "pause5")
+            Item(icon: "music.note.list", title: "Плейлисты"),
+            Item(icon: "rectangle.stack", title: "Альбомы"),
+            Item(icon: "music.note", title: "Песни"),
+            Item(icon: "music.note.tv", title: "Видеоклипы"),
+            Item(icon: "music.mic", title: "Артисты"),
+            Item(icon: "tv", title: "Телешоу и фильмы"),
+            Item(icon: "guitars", title: "Жанры"),
+            Item(icon: "person.2.crop.square.stack", title: "Сборники"),
+            Item(icon: "music.quarternote.3", title: "Авторы"),
+            Item(icon: "arrow.down.circle", title: "Загружено"),
+            Item(icon: "music.note.house", title: "Домашняя коллекция")
         ]}
     static var list = Item.getData()
     }

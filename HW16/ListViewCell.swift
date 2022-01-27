@@ -14,7 +14,6 @@ struct ListViewCell: View {
             Image(systemName: cellDAta.icon)
                 .foregroundColor(.red)
             Text(cellDAta.title)
-                .foregroundColor(.red)
         }
         .listRowBackground(Color.clear)
     }
