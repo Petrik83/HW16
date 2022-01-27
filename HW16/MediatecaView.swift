@@ -24,7 +24,9 @@ struct MediatecaView: View {
             }
                 .navigationTitle("Медиатека")
                 .navigationBarItems(trailing:
-                                        Text("Править")
+                                        NavigationLink("Править", destination: {
+                        ListView()
+                        })
                                         .foregroundColor(.red))
                
         }
