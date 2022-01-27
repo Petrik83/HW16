@@ -8,23 +8,27 @@
 import SwiftUI
 
 struct ListView: View {
-    @State var list = Item.getData()
-    @State var selection: Set<String> = []
+    @State var selection = Set<UUID>()
     
     var body: some View {
-        List(selection: $selection) {
-            ForEach(list, id: \.self) { index in
-                ListViewCell(cellDAta: index)
-            }
-            .onMove(perform: move)
+        VStack {
+            List(selection: $selection) {
+                    ForEach(Item.list) { index in
+                        ListViewCell(cellDAta: index).tag(index)
+                    }
+                    .onMove(perform: move)
+                }
+                .environment(\.editMode, Binding.constant(EditMode.active))
+                .accentColor(.red)
+            .listStyle(.plain)
+            
+
         }
-        .environment(\.editMode, Binding.constant(EditMode.active))
-        .accentColor(.red)
-        .listStyle(.plain)
+           
     }
 
     func move(from source: IndexSet, to destination: Int) {
-           list.move(fromOffsets: source, toOffset: destination)
+        Item.list.move(fromOffsets: source, toOffset: destination)
        }
 }
 

@@ -11,17 +11,18 @@ struct Item {
     
     let icon: String
     let title: String
-    var checkmark: Bool
+    let id = UUID()
 }
 
-extension Item: Hashable {
+extension Item: Hashable, Identifiable {
     static func getData() -> [Item] {
         return [
-            Item(icon: "play", title: "play", checkmark: false),
-            Item(icon: "pause", title: "pause1", checkmark: false),
-            Item(icon: "pause", title: "pause2", checkmark: false),
-            Item(icon: "pause", title: "pause3", checkmark: false),
-            Item(icon: "pause", title: "pause4", checkmark: false),
-            Item(icon: "pause", title: "pause5", checkmark: false)
+            Item(icon: "play", title: "play"),
+            Item(icon: "pause", title: "pause1"),
+            Item(icon: "pause", title: "pause2"),
+            Item(icon: "pause", title: "pause3"),
+            Item(icon: "pause", title: "pause4"),
+            Item(icon: "pause", title: "pause5")
         ]}
+    static var list = Item.getData()
     }

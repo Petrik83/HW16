@@ -11,8 +11,8 @@ struct ContentView: View {
     init (){
         UITabBar.appearance().backgroundColor = .systemBackground
     }
-    @State var shouldEditViewAppiar = false
     
+    @State var shouldEditViewAppiar = false
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView {
