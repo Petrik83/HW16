@@ -15,8 +15,7 @@ struct ListViewCell: View {
                 .foregroundColor(.red)
             Text(cellDAta.title)
                 .foregroundColor(.red)
-            
         }
-        
+        .listRowBackground(Color.clear)
     }
 }
