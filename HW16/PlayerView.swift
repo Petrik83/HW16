@@ -15,9 +15,7 @@ struct PlayerView: View {
             Rectangle()
                 .frame(height: 80)
                 .foregroundColor(Color.init(UIColor.systemBackground))
-                .opacity(0.95)
-//                .blur(radius: 5.0)
-                
+                .opacity(0.95)                
             HStack {
                     Image("mumiytroll")
                         .resizable()
