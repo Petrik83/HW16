@@ -17,10 +17,10 @@ struct ListView: View {
                 ListViewCell(cellDAta: index)
             }
             .onMove(perform: move)
-            
         }
         .environment(\.editMode, Binding.constant(EditMode.active))
         .accentColor(.red)
+        .listStyle(.plain)
     }
 
     func move(from source: IndexSet, to destination: Int) {
