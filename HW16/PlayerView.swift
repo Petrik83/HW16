@@ -9,8 +9,6 @@ import SwiftUI
 
 struct PlayerView: View {
     var body: some View {
-       
-            
         ZStack {
             Rectangle()
                 .frame(height: 80)
@@ -37,7 +35,6 @@ struct PlayerView: View {
                             .foregroundColor(.black)
                     }
                     .padding(.trailing)
-
                 }
             .frame(height: 70)
         }
