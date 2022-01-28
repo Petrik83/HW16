@@ -41,7 +41,7 @@ struct ContentView: View {
                 }
                 
                 NavigationView{
-                    Text("Радио")
+                    RadioView()
                         .navigationTitle("Радио")
                 }
                 .tabItem {

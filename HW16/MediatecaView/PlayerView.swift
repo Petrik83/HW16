@@ -17,7 +17,7 @@ struct PlayerView: View {
             HStack {
                     Image("mumiytroll")
                         .resizable()
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/, 20.0)
                         .frame(width: 100, height: 100)
                     Text("Фантастика")
                     Spacer()
@@ -25,14 +25,14 @@ struct PlayerView: View {
                         print("play")
                     } label: {
                         Image(systemName: "play.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                     }
                     .padding(.trailing, 6.0)
                     Button {
                         print("play")
                     } label: {
                         Image(systemName: "forward.fill")
-                            .foregroundColor(.black)
+                            .foregroundColor(.primary)
                     }
                     .padding(.trailing)
                 }

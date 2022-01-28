@@ -16,6 +16,9 @@
 		39983CFE27A1641100ED3EE8 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39983CFD27A1641100ED3EE8 /* ListView.swift */; };
 		39983D0027A16A7200ED3EE8 /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39983CFF27A16A7200ED3EE8 /* ListViewCell.swift */; };
 		39983D0227A16AB100ED3EE8 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39983D0127A16AB100ED3EE8 /* Model.swift */; };
+		39983D0827A4085B00ED3EE8 /* RadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39983D0727A4085B00ED3EE8 /* RadioView.swift */; };
+		39983D0C27A4166E00ED3EE8 /* HorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39983D0B27A4166D00ED3EE8 /* HorizontalCell.swift */; };
+		39983D0E27A4168500ED3EE8 /* VerticalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39983D0D27A4168500ED3EE8 /* VerticalCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		39983CFD27A1641100ED3EE8 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		39983CFF27A16A7200ED3EE8 /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		39983D0127A16AB100ED3EE8 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		39983D0727A4085B00ED3EE8 /* RadioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioView.swift; sourceTree = "<group>"; };
+		39983D0B27A4166D00ED3EE8 /* HorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCell.swift; sourceTree = "<group>"; };
+		39983D0D27A4168500ED3EE8 /* VerticalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +69,8 @@
 			children = (
 				39983CEB279FF0C500ED3EE8 /* HW16App.swift */,
 				39983CED279FF0C500ED3EE8 /* ContentView.swift */,
-				39983CF9279FF9D600ED3EE8 /* MediatecaView.swift */,
-				39983CFB27A1412900ED3EE8 /* PlayerView.swift */,
-				39983CFD27A1641100ED3EE8 /* ListView.swift */,
-				39983CFF27A16A7200ED3EE8 /* ListViewCell.swift */,
-				39983D0127A16AB100ED3EE8 /* Model.swift */,
+				39983D0927A409D100ED3EE8 /* MediatecaView */,
+				39983D0A27A409E400ED3EE8 /* RadioView */,
 				39983CEF279FF0C900ED3EE8 /* Assets.xcassets */,
 				39983CF1279FF0C900ED3EE8 /* Preview Content */,
 			);
@@ -80,6 +83,28 @@
 				39983CF2279FF0C900ED3EE8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		39983D0927A409D100ED3EE8 /* MediatecaView */ = {
+			isa = PBXGroup;
+			children = (
+				39983CF9279FF9D600ED3EE8 /* MediatecaView.swift */,
+				39983CFB27A1412900ED3EE8 /* PlayerView.swift */,
+				39983CFD27A1641100ED3EE8 /* ListView.swift */,
+				39983CFF27A16A7200ED3EE8 /* ListViewCell.swift */,
+				39983D0127A16AB100ED3EE8 /* Model.swift */,
+			);
+			path = MediatecaView;
+			sourceTree = "<group>";
+		};
+		39983D0A27A409E400ED3EE8 /* RadioView */ = {
+			isa = PBXGroup;
+			children = (
+				39983D0727A4085B00ED3EE8 /* RadioView.swift */,
+				39983D0B27A4166D00ED3EE8 /* HorizontalCell.swift */,
+				39983D0D27A4168500ED3EE8 /* VerticalCell.swift */,
+			);
+			path = RadioView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,11 +179,14 @@
 			files = (
 				39983D0227A16AB100ED3EE8 /* Model.swift in Sources */,
 				39983CFA279FF9D600ED3EE8 /* MediatecaView.swift in Sources */,
+				39983D0C27A4166E00ED3EE8 /* HorizontalCell.swift in Sources */,
 				39983CEE279FF0C500ED3EE8 /* ContentView.swift in Sources */,
 				39983CFE27A1641100ED3EE8 /* ListView.swift in Sources */,
+				39983D0827A4085B00ED3EE8 /* RadioView.swift in Sources */,
 				39983CEC279FF0C500ED3EE8 /* HW16App.swift in Sources */,
 				39983D0027A16A7200ED3EE8 /* ListViewCell.swift in Sources */,
 				39983CFC27A1412A00ED3EE8 /* PlayerView.swift in Sources */,
+				39983D0E27A4168500ED3EE8 /* VerticalCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
