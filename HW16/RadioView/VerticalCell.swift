@@ -9,10 +9,14 @@ import SwiftUI
 
 struct VerticalCell: View {
     var body: some View {
-        Rectangle()
-            .foregroundColor(.red)
-            .frame(height: 200)
+        
+        VStack {
+
+            Rectangle()
+                .foregroundColor(.red)
+                .frame(height: 200)
             .cornerRadius(20)
+        }
     }
 }
 

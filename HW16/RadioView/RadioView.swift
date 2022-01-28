@@ -21,13 +21,16 @@ struct RadioView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: rows) {
-                        ForEach(0..<10) { index in
-                            HorizontalCell()
+                        ForEach(0..<HorizontalRadioItem.horizontalRadioItem.count) { index in
+                            HorizontalCell(cellDAta: HorizontalRadioItem.horizontalRadioItem[index])
                                 .frame(width: geometry.size.width * 0.9, height: geometry.size.width * 0.9)
+                                .padding(.trailing, 5)
                         }
                     }
                     .padding(.leading, 20.0)
                 }
+                Divider()
+                    .padding(.horizontal, 20)
                 LazyVGrid(columns: columns) {
                     Section(header: HStack {
                         Text("Станции")

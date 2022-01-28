@@ -8,15 +8,32 @@
 import SwiftUI
 
 struct HorizontalCell: View {
+    @State var cellDAta: HorizontalRadioItem
     var body: some View {
-        Rectangle()
-            .foregroundColor(.blue)
-            .cornerRadius(20)
+        GeometryReader { geometry in
+            VStack(alignment: .leading) {
+                Divider()
+                Text("ИЗБРАННАЯ РАДИОСТАНЦИЯ")
+                    .foregroundColor(.secondary)
+                    .font(.caption)
+                Text(cellDAta.title)
+                    .font(.title)
+
+                Text("Станция Apple Music")
+                    .foregroundColor(.secondary)
+                    .font(.title)
+                Image(cellDAta.image)
+                    .resizable()
+                    .cornerRadius(5)
+            }
+            .frame(width: geometry.size.width, height: geometry.size.width)
+        
     }
+}
 }
 
 struct HorizontalCell_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalCell()
+        HorizontalCell(cellDAta: HorizontalRadioItem(image: "Хиты", title: "Хиты"))
     }
 }
