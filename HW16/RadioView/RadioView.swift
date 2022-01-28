@@ -21,14 +21,14 @@ struct RadioView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: rows) {
-                        ForEach(0..<HorizontalRadioItem.horizontalRadioItem.count) { index in
-                            HorizontalCell(cellDAta: HorizontalRadioItem.horizontalRadioItem[index])
+                        ForEach(0..<RadioItem.horizontalRadioItem.count) { index in
+                            HorizontalCell(cellDAta: RadioItem.horizontalRadioItem[index])
                                 .frame(width: geometry.size.width * 0.9, height: geometry.size.width * 0.9)
                                 .padding(.trailing, 5)
                         }
                     }
-                    .padding(.leading, 20.0)
                 }
+                
                 Divider()
                     .padding(.horizontal, 20)
                 LazyVGrid(columns: columns) {
@@ -40,12 +40,12 @@ struct RadioView: View {
                     }) {
                         ForEach(0..<10) { index in
                             VerticalCell()
+                                .frame(width: geometry.size.width, height: geometry.size.width / 3)
                         }
                     }
                 }
-                .padding(.horizontal, 20.0)
-                
             }
+            .padding(.leading, 10.0)
         }
     }
 }

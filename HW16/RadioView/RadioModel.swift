@@ -7,23 +7,24 @@
 
 import Foundation
 
-struct HorizontalRadioItem {
+struct RadioItem {
     
     let image: String
     let title: String
+    let subTitle: String?
     let id = UUID()
 }
 
-extension HorizontalRadioItem: Hashable, Identifiable {
-    static func getData() -> [HorizontalRadioItem] {
+extension RadioItem: Hashable, Identifiable {
+    static func getHorizontalData() -> [RadioItem] {
         return [
-            HorizontalRadioItem(image: "Хип-хоп на русском", title: "Хип-хоп на русском"),
-            HorizontalRadioItem(image: "Хиты на русском", title: "Хиты на русском"),
-            HorizontalRadioItem(image: "Чилаут", title: "Чилаут"),
-            HorizontalRadioItem(image: "Хип-хоп", title: "Хип-хоп"),
-            HorizontalRadioItem(image: "Поп-музыка", title: "Поп-музыка"),
-            HorizontalRadioItem(image: "Танцевальная музыка", title: "Танцевальная музыка"),
-            HorizontalRadioItem(image: "Хиты", title: "Хиты")
+            RadioItem(image: "Хип-хоп на русском", title: "Хип-хоп на русском", subTitle: nil),
+            RadioItem(image: "Хиты на русском", title: "Хиты на русском", subTitle: nil),
+            RadioItem(image: "Чилаут", title: "Чилаут", subTitle: nil),
+            RadioItem(image: "Хип-хоп", title: "Хип-хоп", subTitle: nil),
+            RadioItem(image: "Поп-музыка", title: "Поп-музыка", subTitle: nil),
+            RadioItem(image: "Танцевальная музыка", title: "Танцевальная музыка", subTitle: nil),
+            RadioItem(image: "Хиты", title: "Хиты", subTitle: nil)
         ]}
-    static var horizontalRadioItem = HorizontalRadioItem.getData()
+    static var horizontalRadioItem = RadioItem.getHorizontalData()
 }

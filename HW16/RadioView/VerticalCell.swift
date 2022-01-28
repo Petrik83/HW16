@@ -9,13 +9,23 @@ import SwiftUI
 
 struct VerticalCell: View {
     var body: some View {
-        
-        VStack {
-
-            Rectangle()
-                .foregroundColor(.red)
-                .frame(height: 200)
-            .cornerRadius(20)
+        GeometryReader { geometry in
+            HStack {
+                Rectangle()
+                    .foregroundColor(.red)
+                    .cornerRadius(5)
+                    .frame(width: (geometry.size.width / 3) - 15, height: (geometry.size.width / 3) - 15)
+                    .padding(.leading,5)
+                VStack(alignment: .leading) {
+                    Spacer()
+                    Text("ddffdfd")
+                    Text("dfdfdfdfdfdfd")
+                    Spacer()
+                    Divider()
+                }
+                Spacer()
+            }
+            .frame(width: geometry.size.width, height: geometry.size.width / 3)
         }
     }
 }

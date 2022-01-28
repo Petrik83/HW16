@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HorizontalCell: View {
-    @State var cellDAta: HorizontalRadioItem
+    @State var cellDAta: RadioItem
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
@@ -34,6 +34,6 @@ struct HorizontalCell: View {
 
 struct HorizontalCell_Previews: PreviewProvider {
     static var previews: some View {
-        HorizontalCell(cellDAta: HorizontalRadioItem(image: "Хиты", title: "Хиты"))
+        HorizontalCell(cellDAta: RadioItem(image: "Хиты", title: "Хиты", subTitle: nil))
     }
 }
