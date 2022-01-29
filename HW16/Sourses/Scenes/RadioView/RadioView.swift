@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct RadioView: View {
-    let rows = [
-        GridItem(.flexible())
-    ]
-    let columns = [
-        GridItem(.flexible())
-    ]
-    
+    let rows = [GridItem(.flexible())]
+    let columns = [GridItem(.flexible())]
     
     var body: some View {
         GeometryReader { geometry in
@@ -22,13 +17,12 @@ struct RadioView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: rows) {
                         ForEach(0..<RadioItem.horizontalRadioItem.count) { index in
-                            HorizontalCell(cellDAta: RadioItem.horizontalRadioItem[index])
+                            HorizontalCell(cellData: RadioItem.horizontalRadioItem[index])
                                 .frame(width: geometry.size.width * 0.9, height: geometry.size.width * 0.9)
                                 .padding(.trailing, 5)
                         }
                     }
                 }
-                
                 Divider()
                     .padding(.horizontal, 20)
                 LazyVGrid(columns: columns) {
@@ -39,7 +33,7 @@ struct RadioView: View {
                         Spacer()
                     }) {
                         ForEach(0..<10) { index in
-                            VerticalCell()
+                            VerticalCell(cellData: RadioItem.verticalRadioItem[index])
                                 .frame(width: geometry.size.width, height: geometry.size.width / 3)
                         }
                     }

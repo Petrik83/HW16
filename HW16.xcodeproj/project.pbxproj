@@ -69,11 +69,8 @@
 		39983CEA279FF0C500ED3EE8 /* HW16 */ = {
 			isa = PBXGroup;
 			children = (
-				39983CEB279FF0C500ED3EE8 /* HW16App.swift */,
-				39983CED279FF0C500ED3EE8 /* ContentView.swift */,
-				39983D0927A409D100ED3EE8 /* MediatecaView */,
-				39983D0A27A409E400ED3EE8 /* RadioView */,
-				39983CEF279FF0C900ED3EE8 /* Assets.xcassets */,
+				6DBB98CD27A5658900CA2DA3 /* Resourses */,
+				6DBB98CE27A565DE00CA2DA3 /* Sourses */,
 				39983CF1279FF0C900ED3EE8 /* Preview Content */,
 			);
 			path = HW16;
@@ -94,7 +91,6 @@
 				39983CFB27A1412900ED3EE8 /* PlayerView.swift */,
 				39983CFD27A1641100ED3EE8 /* ListView.swift */,
 				39983CFF27A16A7200ED3EE8 /* ListViewCell.swift */,
-				39983D0127A16AB100ED3EE8 /* Model.swift */,
 			);
 			path = MediatecaView;
 			sourceTree = "<group>";
@@ -105,9 +101,53 @@
 				39983D0727A4085B00ED3EE8 /* RadioView.swift */,
 				39983D0B27A4166D00ED3EE8 /* HorizontalCell.swift */,
 				39983D0D27A4168500ED3EE8 /* VerticalCell.swift */,
-				6DBB98CA27A45EFF00CA2DA3 /* RadioModel.swift */,
 			);
 			path = RadioView;
+			sourceTree = "<group>";
+		};
+		6DBB98CC27A5609800CA2DA3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6DBB98CA27A45EFF00CA2DA3 /* RadioModel.swift */,
+				39983D0127A16AB100ED3EE8 /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6DBB98CD27A5658900CA2DA3 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				39983CEF279FF0C900ED3EE8 /* Assets.xcassets */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
+		6DBB98CE27A565DE00CA2DA3 /* Sourses */ = {
+			isa = PBXGroup;
+			children = (
+				6DBB98D127A5665200CA2DA3 /* App */,
+				6DBB98D027A5663300CA2DA3 /* Scenes */,
+				6DBB98CC27A5609800CA2DA3 /* Models */,
+			);
+			path = Sourses;
+			sourceTree = "<group>";
+		};
+		6DBB98D027A5663300CA2DA3 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				39983D0927A409D100ED3EE8 /* MediatecaView */,
+				39983D0A27A409E400ED3EE8 /* RadioView */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		6DBB98D127A5665200CA2DA3 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				39983CEB279FF0C500ED3EE8 /* HW16App.swift */,
+				39983CED279FF0C500ED3EE8 /* ContentView.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

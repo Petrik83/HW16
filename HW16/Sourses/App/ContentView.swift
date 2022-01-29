@@ -13,6 +13,7 @@ struct ContentView: View {
     }
     @State var selection = Set<UUID>()
     @State var shouldEditViewAppiar = false
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView {
@@ -21,17 +22,17 @@ struct ContentView: View {
                         .navigationTitle("Медиатека")
                         .navigationBarItems(trailing:
                                                 Button(action: {
-                                                    shouldEditViewAppiar.toggle()
+                            shouldEditViewAppiar.toggle()
                             
-                                                    }, label: {
-                                                    switch shouldEditViewAppiar {
-                                                    case true:
-                                                        Text("Готово")
-                                                    case false:
-                                                        Text("Править")
-                                                    }
+                        }, label: {
+                            switch shouldEditViewAppiar {
+                            case true:
+                                Text("Готово")
+                            case false:
+                                Text("Править")
+                            }
                             
-                                                    })
+                        })
                                                 .foregroundColor(.red))
                 }
                 .tabItem {
@@ -53,10 +54,10 @@ struct ContentView: View {
                     Text("Поиск")
                         .navigationTitle("Поиск")
                 }
-                    .tabItem {
-                        Image(systemName: "magnifyingglass")
-                        Text("Поиск")
-                    }
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Поиск")
+                }
             }
             PlayerView()
                 .padding(.bottom, 49.0)

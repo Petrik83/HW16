@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct VerticalCell: View {
+    @State var cellData: RadioItem
     var body: some View {
         GeometryReader { geometry in
             HStack {
-                Rectangle()
-                    .foregroundColor(.red)
+                Image(cellData.image)
+                    .resizable()
                     .cornerRadius(5)
                     .frame(width: (geometry.size.width / 3) - 15, height: (geometry.size.width / 3) - 15)
                     .padding(.leading,5)
                 VStack(alignment: .leading) {
                     Spacer()
-                    Text("ddffdfd")
-                    Text("dfdfdfdfdfdfd")
+                    Text(cellData.title)
+                    Text("Станция Apple Music")
                     Spacer()
                     Divider()
                 }
@@ -32,6 +33,6 @@ struct VerticalCell: View {
 
 struct VerticalCell_Previews: PreviewProvider {
     static var previews: some View {
-        VerticalCell()
+        VerticalCell(cellData: RadioItem(image: "Хиты", title: "Хиты"))
     }
 }
