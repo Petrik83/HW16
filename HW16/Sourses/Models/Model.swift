@@ -14,7 +14,7 @@ struct Item {
     let id = UUID()
 }
 
-extension Item: Hashable, Identifiable {
+extension Item: Identifiable {
     static func getData() -> [Item] {
         return [
             Item(icon: "music.note.list", title: "Плейлисты"),

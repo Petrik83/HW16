@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    init (){
-        UITabBar.appearance().backgroundColor = .systemBackground
-    }
     @State var selection = Set<UUID>()
     @State var shouldEditViewAppiar = false
     
@@ -22,17 +19,15 @@ struct ContentView: View {
                         .navigationTitle("Медиатека")
                         .navigationBarItems(trailing:
                                                 Button(action: {
-                            shouldEditViewAppiar.toggle()
-                            
-                        }, label: {
-                            switch shouldEditViewAppiar {
-                            case true:
-                                Text("Готово")
-                            case false:
-                                Text("Править")
-                            }
-                            
-                        })
+                                                    shouldEditViewAppiar.toggle()
+                                                    }, label: {
+                                                    switch shouldEditViewAppiar {
+                                                    case true:
+                                                        Text("Готово")
+                                                    case false:
+                                                        Text("Править")
+                                                    }
+                                                    })
                                                 .foregroundColor(.red))
                 }
                 .tabItem {
@@ -42,7 +37,7 @@ struct ContentView: View {
                 }
                 
                 NavigationView{
-                    RadioView()
+                    Text("Радио")
                         .navigationTitle("Радио")
                 }
                 .tabItem {
@@ -54,13 +49,14 @@ struct ContentView: View {
                     Text("Поиск")
                         .navigationTitle("Поиск")
                 }
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                    Text("Поиск")
-                }
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
+                        Text("Поиск")
+                    }
             }
+            
             PlayerView()
-                .padding(.bottom, 49.0)
+                .padding(.bottom, Metric.playerViewPadding)
         }
     }
     
@@ -80,3 +76,6 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+enum Metric {
+    static let playerViewPadding = 45.0
+}

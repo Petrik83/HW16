@@ -17,7 +17,7 @@ struct ListView: View {
         VStack {
             List(selection: $selection) {
                 ForEach(Item.list) { index in
-                    ListViewCell(cellDAta: index).tag(index)
+                    ListViewCell(cellDAta: index)
                 }
                 .onMove(perform: move)
             }
