@@ -42,11 +42,11 @@ struct FindField: View {
                     .foregroundColor(Color(.systemRed))
                 }
             }
-            .padding(.horizontal)
+            .padding(.horizontal, 20)
             .navigationBarHidden(showCancelButton) // .animation(.default) // animation does not work properly
             
             
-            Spacer()
+//            Spacer()
         }
     }
 }
@@ -62,6 +62,6 @@ extension UIApplication {
 
 //struct FindField_Previews: PreviewProvider {
 //    static var previews: some View {
-//        FindField(showCancelButton: Binding<true>)
+//        FindField(showCancelButton: )
 //    }
 //}

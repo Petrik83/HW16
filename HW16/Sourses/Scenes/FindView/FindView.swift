@@ -11,12 +11,28 @@ struct FindView: View {
     @Binding var showCancelButton: Bool
     
     var body: some View {
-        FindField(showCancelButton: $showCancelButton)
+        
+        VStack {
+            FindField(showCancelButton: $showCancelButton)
+            switch showCancelButton {
+            case true:
+                SearchFindView()
+                
+            case false:
+                VStack {
+                    Divider()
+                    StandartFindView()
+                }
+                .padding(.horizontal, 20)
+                
+            }
+            Spacer()
+        }
     }
 }
 
 //struct FindView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        FindView()
+//        FindView(showCancelButton: Binding<showCancelButton>)
 //    }
 //}
