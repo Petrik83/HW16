@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		390BB0E227AA5AB5009B7309 /* FindView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390BB0E127AA5AB5009B7309 /* FindView.swift */; };
+		390BB0E427AA77E1009B7309 /* FindField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390BB0E327AA77E1009B7309 /* FindField.swift */; };
 		39983CEC279FF0C500ED3EE8 /* HW16App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39983CEB279FF0C500ED3EE8 /* HW16App.swift */; };
 		39983CEE279FF0C500ED3EE8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39983CED279FF0C500ED3EE8 /* ContentView.swift */; };
 		39983CF0279FF0C900ED3EE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39983CEF279FF0C900ED3EE8 /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		390BB0E127AA5AB5009B7309 /* FindView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindView.swift; sourceTree = "<group>"; };
+		390BB0E327AA77E1009B7309 /* FindField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindField.swift; sourceTree = "<group>"; };
 		39983CE8279FF0C500ED3EE8 /* HW16.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HW16.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		39983CEB279FF0C500ED3EE8 /* HW16App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HW16App.swift; sourceTree = "<group>"; };
 		39983CED279FF0C500ED3EE8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,6 +54,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		390BB0E027AA5A5F009B7309 /* FindView */ = {
+			isa = PBXGroup;
+			children = (
+				390BB0E127AA5AB5009B7309 /* FindView.swift */,
+				390BB0E327AA77E1009B7309 /* FindField.swift */,
+			);
+			path = FindView;
+			sourceTree = "<group>";
+		};
 		39983CDF279FF0C500ED3EE8 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +150,7 @@
 			children = (
 				39983D0927A409D100ED3EE8 /* MediatecaView */,
 				39983D0A27A409E400ED3EE8 /* RadioView */,
+				390BB0E027AA5A5F009B7309 /* FindView */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -225,6 +239,8 @@
 				6DBB98CB27A45EFF00CA2DA3 /* RadioModel.swift in Sources */,
 				39983D0C27A4166E00ED3EE8 /* HorizontalCell.swift in Sources */,
 				39983CEE279FF0C500ED3EE8 /* ContentView.swift in Sources */,
+				390BB0E227AA5AB5009B7309 /* FindView.swift in Sources */,
+				390BB0E427AA77E1009B7309 /* FindField.swift in Sources */,
 				39983CFE27A1641100ED3EE8 /* ListView.swift in Sources */,
 				39983D0827A4085B00ED3EE8 /* RadioView.swift in Sources */,
 				39983CEC279FF0C500ED3EE8 /* HW16App.swift in Sources */,

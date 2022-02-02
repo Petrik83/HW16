@@ -11,8 +11,11 @@ struct ContentView: View {
     init (){
         UITabBar.appearance().backgroundColor = .systemBackground
     }
+    
     @State var selection = Set<UUID>()
     @State var shouldEditViewAppiar = false
+    @State var showCancelButton: Bool = false
+    
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -51,7 +54,7 @@ struct ContentView: View {
                 }
                 
                 NavigationView{
-                    Text("Поиск")
+                    FindView(showCancelButton: $showCancelButton)
                         .navigationTitle("Поиск")
                 }
                 .tabItem {
@@ -59,15 +62,18 @@ struct ContentView: View {
                     Text("Поиск")
                 }
             }
-            PlayerView()
-                .padding(.bottom, 49.0)
+            if !showCancelButton {
+                PlayerView()
+                    .padding(.bottom, 49.0)
+            }
+            
         }
     }
     
     func screenSelection(editViewAppiar: Bool) -> AnyView {
         switch editViewAppiar {
         case true:
-            return AnyView(ListView(count: $selection))
+            return AnyView(ListView(selection: $selection))
         case false:
             return AnyView(MediatecaView())
         }
