@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State var selection = Set<UUID>()
     @State var shouldEditViewAppiar = false
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView {
@@ -19,7 +20,6 @@ struct ContentView: View {
                         .navigationBarItems(trailing:
                                                 Button(action: {
                                                     shouldEditViewAppiar.toggle()
-                            
                                                     }, label: {
                                                     switch shouldEditViewAppiar {
                                                     case true:
@@ -27,7 +27,6 @@ struct ContentView: View {
                                                     case false:
                                                         Text("Править")
                                                     }
-                            
                                                     })
                                                 .foregroundColor(.red))
                 }
@@ -55,8 +54,9 @@ struct ContentView: View {
                         Text("Поиск")
                     }
             }
+            
             PlayerView()
-                .padding(.bottom, 45.0)
+                .padding(.bottom, Metric.playerViewPadding)
         }
     }
     
@@ -76,3 +76,6 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+enum Metric {
+    static let playerViewPadding = 45.0
+}

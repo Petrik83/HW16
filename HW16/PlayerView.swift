@@ -11,21 +11,21 @@ struct PlayerView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .frame(height: 90)
+                .frame(height: PlayerViewMetric.rectangleHeight)
                 .foregroundColor(Color.init(UIColor.systemBackground))
-                .opacity(0.95)
-                .blur(radius: 3.0)
+                .opacity(PlayerViewMetric.rectangleOpacity)
+                .blur(radius: PlayerViewMetric.rectangleBlur)
                 
             VStack {
                 Divider()
-                    .padding(0)
+                
                 HStack {
                         Image("mumiytroll")
                             .resizable()
-                            .cornerRadius(8)
-                            .shadow(radius: 8)
+                            .cornerRadius(PlayerViewMetric.cornerRadius)
+                            .shadow(radius: PlayerViewMetric.shadowRadius)
                             .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                            .frame(width: 100, height: 100)
+                            .frame(width: PlayerViewMetric.imageWidth, height: PlayerViewMetric.imageHeight)
                     
                         Text("Фантастика")
                         Spacer()
@@ -35,7 +35,7 @@ struct PlayerView: View {
                             Image(systemName: "play.fill")
                                 .foregroundColor(.black)
                         }
-                        .padding(.trailing, 6.0)
+                        .padding(.trailing, PlayerViewMetric.buttonPadding)
                         Button {
                             print("play")
                         } label: {
@@ -44,7 +44,8 @@ struct PlayerView: View {
                         }
                         .padding(.trailing)
                     }
-                .frame(height: 70)
+                
+                .frame(height: PlayerViewMetric.hStackHeight)
                 Divider()
             }
         }
@@ -55,4 +56,19 @@ struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
         PlayerView()
     }
+}
+
+enum PlayerViewMetric {
+    static let rectangleHeight = 90.0
+    static let rectangleOpacity = 0.95
+    static let rectangleBlur = 3.0
+    
+    static let imageWidth = 100.0
+    static let imageHeight = 100.0
+    static let cornerRadius = 8.0
+    static let shadowRadius = 8.0
+    
+    static let buttonPadding = 6.0
+    
+    static let hStackHeight = 70.0
 }
