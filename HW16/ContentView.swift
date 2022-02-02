@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    init (){
-        UITabBar.appearance().backgroundColor = .systemBackground
-    }
     @State var selection = Set<UUID>()
     @State var shouldEditViewAppiar = false
     var body: some View {
@@ -59,7 +56,7 @@ struct ContentView: View {
                     }
             }
             PlayerView()
-                .padding(.bottom, 49.0)
+                .padding(.bottom, 45.0)
         }
     }
     

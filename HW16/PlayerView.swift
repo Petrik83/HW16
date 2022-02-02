@@ -11,32 +11,42 @@ struct PlayerView: View {
     var body: some View {
         ZStack {
             Rectangle()
-                .frame(height: 80)
+                .frame(height: 90)
                 .foregroundColor(Color.init(UIColor.systemBackground))
-                .opacity(0.95)                
-            HStack {
-                    Image("mumiytroll")
-                        .resizable()
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                        .frame(width: 100, height: 100)
-                    Text("Фантастика")
-                    Spacer()
-                    Button {
-                        print("play")
-                    } label: {
-                        Image(systemName: "play.fill")
-                            .foregroundColor(.black)
+                .opacity(0.95)
+                .blur(radius: 3.0)
+                
+            VStack {
+                Divider()
+                    .padding(0)
+                HStack {
+                        Image("mumiytroll")
+                            .resizable()
+                            .cornerRadius(8)
+                            .shadow(radius: 8)
+                            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                            .frame(width: 100, height: 100)
+                    
+                        Text("Фантастика")
+                        Spacer()
+                        Button {
+                            print("play")
+                        } label: {
+                            Image(systemName: "play.fill")
+                                .foregroundColor(.black)
+                        }
+                        .padding(.trailing, 6.0)
+                        Button {
+                            print("play")
+                        } label: {
+                            Image(systemName: "forward.fill")
+                                .foregroundColor(.black)
+                        }
+                        .padding(.trailing)
                     }
-                    .padding(.trailing, 6.0)
-                    Button {
-                        print("play")
-                    } label: {
-                        Image(systemName: "forward.fill")
-                            .foregroundColor(.black)
-                    }
-                    .padding(.trailing)
-                }
-            .frame(height: 70)
+                .frame(height: 70)
+                Divider()
+            }
         }
     }
 }
