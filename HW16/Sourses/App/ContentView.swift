@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var selection = Set<UUID>()
     @State var shouldEditViewAppiar = false
     @State var showCancelButton: Bool = false
+    @State var queryString = ""
     
     
     var body: some View {
@@ -54,8 +55,12 @@ struct ContentView: View {
                 }
                 
                 NavigationView{
-                    FindView(showCancelButton: $showCancelButton)
-                        .navigationTitle("Поиск")
+                    
+                    VStack {
+                        FindView(showCancelButton: $showCancelButton)
+                            .navigationTitle("Поиск")
+                    }
+                        
                 }
                 .tabItem {
                     Image(systemName: "magnifyingglass")

@@ -12,17 +12,15 @@ struct StandartFindView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ScrollView(.vertical, showsIndicators: false) {
-                LazyVGrid(columns: columns) {
-                    Section(header: HStack {
-                        Text("Поиск по категориям")
-                            .bold()
-                        Spacer()
-                    }) {
-                        ForEach(0..<10) { index in
-                            StandartFindViewCell(cellData: RadioItem.verticalRadioItem[index])
-                                .frame(width: geometry.size.width / 2, height: geometry.size.width / 3)
-                        }
+            LazyVGrid(columns: columns) {
+                Section(header: HStack {
+                    Text("Поиск по категориям")
+                        .bold()
+                    Spacer()
+                }) {
+                    ForEach(0..<10) { index in
+                        StandartFindViewCell(cellData: RadioItem.verticalRadioItem[index])
+                            .frame(width: geometry.size.width / 2, height: geometry.size.width / 3)
                     }
                 }
             }

@@ -13,13 +13,17 @@ struct StandartFindViewCell: View {
     var body: some View {
         GeometryReader { geometry in
             HStack {
-                Image(cellData.image)
-                    .resizable()
-                    .cornerRadius(10)
-                    .padding(.horizontal,3)
-
+                NavigationLink {
+                    StandartFindMoreInfo()
+                } label: {
+                    Image(cellData.image)
+                        .resizable()
+                        .cornerRadius(10)
+                        .padding(.horizontal,3)
+                }
             }
-        }    }
+        }
+    }
 }
 
 struct StandartFindViewCell_Previews: PreviewProvider {

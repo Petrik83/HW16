@@ -14,25 +14,18 @@ struct FindView: View {
         
         VStack {
             FindField(showCancelButton: $showCancelButton)
-            switch showCancelButton {
-            case true:
-                SearchFindView()
-                
-            case false:
-                VStack {
-                    Divider()
-                    StandartFindView()
+            ScrollView(.vertical, showsIndicators: false) {
+                switch showCancelButton {
+                case true:
+                    SearchFindView()
+                case false:
+                    VStack {
+                        Divider()
+                        StandartFindView()
+                    }
+                    .padding(.horizontal, 20)
                 }
-                .padding(.horizontal, 20)
-                
             }
-            Spacer()
         }
     }
 }
-
-//struct FindView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FindView(showCancelButton: Binding<showCancelButton>)
-//    }
-//}

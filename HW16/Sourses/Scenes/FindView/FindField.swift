@@ -10,6 +10,7 @@ import SwiftUI
 struct FindField: View {
     @State private var searchText = ""
     @Binding var showCancelButton: Bool
+    
     var body: some View {
         VStack {
             HStack {
@@ -43,10 +44,8 @@ struct FindField: View {
                 }
             }
             .padding(.horizontal, 20)
-            .navigationBarHidden(showCancelButton) // .animation(.default) // animation does not work properly
-            
-            
-//            Spacer()
+            .navigationBarHidden(showCancelButton)
+            .animation(.default)
         }
     }
 }
