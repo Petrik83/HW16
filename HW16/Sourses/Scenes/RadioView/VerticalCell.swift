@@ -14,19 +14,18 @@ struct VerticalCell: View {
             HStack {
                 Image(cellData.image)
                     .resizable()
-                    .cornerRadius(5)
-                    .frame(width: (geometry.size.width / 3) - 15, height: (geometry.size.width / 3) - 15)
-                    .padding(.leading,5)
+                    .cornerRadius(VerticalCellMetric.imageCornerRadius)
+                    .frame(width: (geometry.size.width / VerticalCellMetric.imageFrameDivider), height: (geometry.size.width / VerticalCellMetric.imageFrameDivider))
+                    .padding(.leading,VerticalCellMetric.imagePadding)
                 VStack(alignment: .leading) {
                     Spacer()
                     Text(cellData.title)
                     Text("Станция Apple Music")
                     Spacer()
-                    Divider()
                 }
                 Spacer()
             }
-            .frame(width: geometry.size.width, height: geometry.size.width / 3)
+            .frame(width: geometry.size.width, height: geometry.size.width / VerticalCellMetric.imageFrameDivider)
         }
     }
 }
@@ -35,4 +34,10 @@ struct VerticalCell_Previews: PreviewProvider {
     static var previews: some View {
         VerticalCell(cellData: RadioItem(image: "Хиты", title: "Хиты"))
     }
+}
+
+enum VerticalCellMetric {
+    static let imageCornerRadius = 5.0
+    static let imagePadding = 20.0
+    static let imageFrameDivider = 3.0
 }
