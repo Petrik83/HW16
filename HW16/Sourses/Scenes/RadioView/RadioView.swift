@@ -14,6 +14,7 @@ struct RadioView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView(.vertical, showsIndicators: false) {
+                Divider()
                 ScrollView(.horizontal, showsIndicators: false) {
                     LazyHGrid(rows: rows) {
                         ForEach(0..<RadioItem.horizontalRadioItem.count) { index in
@@ -24,7 +25,6 @@ struct RadioView: View {
                     }
                 }
                 Divider()
-                    .padding(.horizontal, RadioViewMetric.horizontaldividerPadding)
                 
                 LazyVGrid(columns: columns) {
                     Section(header: HStack {
@@ -34,13 +34,16 @@ struct RadioView: View {
                         Spacer()
                     }) {
                         ForEach(0..<RadioItem.verticalRadioItem.count) { index in
-                            VerticalCell(cellData: RadioItem.verticalRadioItem[index])
-                                .frame(width: geometry.size.width, height: geometry.size.width / RadioViewMetric.verticalRadioItemFrameDivider)
+                            VStack {
+                                VerticalCell(cellData: RadioItem.verticalRadioItem[index])
+                                    .frame(width: geometry.size.width, height: geometry.size.width / RadioViewMetric.verticalRadioItemFrameDivider)
+                                Divider()
+                            }
                         }
                     }
+                    .padding(.horizontal, RadioViewMetric.dividerPadding)
                 }
             }
-            .padding(.leading, RadioViewMetric.verticalScrollViewPadding)
         }
     }
 }
@@ -55,8 +58,7 @@ enum RadioViewMetric {
     static let lazyHGridScale = 0.9
     static let lazyHGridPadding = 5.0
     
-    static let horizontaldividerPadding = 20.0
-    static let verticalScrollViewPadding = 10.0
+    static let dividerPadding = 20.0
     
     static let verticalRadioItemFrameDivider = 3.0
 }

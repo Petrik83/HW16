@@ -15,14 +15,13 @@ struct VerticalCell: View {
                 Image(cellData.image)
                     .resizable()
                     .cornerRadius(VerticalCellMetric.imageCornerRadius)
-                    .frame(width: (geometry.size.width / VerticalCellMetric.imageFrameDivider) - VerticalCellMetric.imageFrameSubtrahend, height: (geometry.size.width / VerticalCellMetric.imageFrameDivider) - VerticalCellMetric.imageFrameSubtrahend)
+                    .frame(width: (geometry.size.width / VerticalCellMetric.imageFrameDivider), height: (geometry.size.width / VerticalCellMetric.imageFrameDivider))
                     .padding(.leading,VerticalCellMetric.imagePadding)
                 VStack(alignment: .leading) {
                     Spacer()
                     Text(cellData.title)
                     Text("Станция Apple Music")
                     Spacer()
-                    Divider()
                 }
                 Spacer()
             }
@@ -39,7 +38,6 @@ struct VerticalCell_Previews: PreviewProvider {
 
 enum VerticalCellMetric {
     static let imageCornerRadius = 5.0
-    static let imagePadding = 5.0
-    static let imageFrameSubtrahend = 15.0
+    static let imagePadding = 20.0
     static let imageFrameDivider = 3.0
 }

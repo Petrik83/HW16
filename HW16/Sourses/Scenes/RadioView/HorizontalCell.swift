@@ -12,7 +12,6 @@ struct HorizontalCell: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading) {
-                Divider()
                 Text("ИЗБРАННАЯ РАДИОСТАНЦИЯ")
                     .foregroundColor(.secondary)
                     .font(.caption)
@@ -26,6 +25,7 @@ struct HorizontalCell: View {
                     .cornerRadius(HorizontalCellMetric.imageCornerRadius)
             }
             .frame(width: geometry.size.width, height: geometry.size.width)
+            .padding(.leading, HorizontalCellMetric.padding)
         }
     }
 }
@@ -38,4 +38,5 @@ struct HorizontalCell_Previews: PreviewProvider {
 
 enum HorizontalCellMetric {
     static let imageCornerRadius = 5.0
+    static let padding = 20.0
 }
