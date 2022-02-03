@@ -23,7 +23,7 @@ struct HorizontalCell: View {
                     .font(.title)
                 Image(cellData.image)
                     .resizable()
-                    .cornerRadius(5)
+                    .cornerRadius(HorizontalCellMetric.imageCornerRadius)
             }
             .frame(width: geometry.size.width, height: geometry.size.width)
         }
@@ -34,4 +34,8 @@ struct HorizontalCell_Previews: PreviewProvider {
     static var previews: some View {
         HorizontalCell(cellData: RadioItem(image: "Хиты", title: "Хиты"))
     }
+}
+
+enum HorizontalCellMetric {
+    static let imageCornerRadius = 5.0
 }

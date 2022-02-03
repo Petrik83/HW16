@@ -18,13 +18,14 @@ struct RadioView: View {
                     LazyHGrid(rows: rows) {
                         ForEach(0..<RadioItem.horizontalRadioItem.count) { index in
                             HorizontalCell(cellData: RadioItem.horizontalRadioItem[index])
-                                .frame(width: geometry.size.width * 0.9, height: geometry.size.width * 0.9)
-                                .padding(.trailing, 5)
+                                .frame(width: geometry.size.width * RadioViewMetric.lazyHGridScale, height: geometry.size.width * RadioViewMetric.lazyHGridScale)
+                                .padding(.trailing, RadioViewMetric.lazyHGridPadding)
                         }
                     }
                 }
                 Divider()
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, RadioViewMetric.horizontaldividerPadding)
+                
                 LazyVGrid(columns: columns) {
                     Section(header: HStack {
                         Text("Станции")
@@ -32,14 +33,14 @@ struct RadioView: View {
                             .font(.title)
                         Spacer()
                     }) {
-                        ForEach(0..<10) { index in
+                        ForEach(0..<RadioItem.verticalRadioItem.count) { index in
                             VerticalCell(cellData: RadioItem.verticalRadioItem[index])
-                                .frame(width: geometry.size.width, height: geometry.size.width / 3)
+                                .frame(width: geometry.size.width, height: geometry.size.width / RadioViewMetric.verticalRadioItemFrameDivider)
                         }
                     }
                 }
             }
-            .padding(.leading, 10.0)
+            .padding(.leading, RadioViewMetric.verticalScrollViewPadding)
         }
     }
 }
@@ -48,4 +49,14 @@ struct RadioView_Previews: PreviewProvider {
     static var previews: some View {
         RadioView()
     }
+}
+
+enum RadioViewMetric {
+    static let lazyHGridScale = 0.9
+    static let lazyHGridPadding = 5.0
+    
+    static let horizontaldividerPadding = 20.0
+    static let verticalScrollViewPadding = 10.0
+    
+    static let verticalRadioItemFrameDivider = 3.0
 }
