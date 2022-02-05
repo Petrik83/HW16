@@ -7,16 +7,17 @@
 
 import SwiftUI
 
+class PickerChoise: ObservableObject {
+    @Published var pickerSelection = "Apple Music"
+}
+
 struct ContentView: View {
-    init (){
-        UITabBar.appearance().backgroundColor = .systemBackground
-    }
-    
+    @StateObject var picker = PickerChoise()
+
     @State var selection = Set<UUID>()
     @State var shouldEditViewAppiar = false
     @State var showCancelButton: Bool = false
     @State var queryString = ""
-    
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -25,19 +26,19 @@ struct ContentView: View {
                     screenSelection(editViewAppiar: shouldEditViewAppiar)
                         .navigationTitle("Медиатека")
                         .navigationBarItems(trailing:
-                                                Button(action: {
-                            shouldEditViewAppiar.toggle()
-                            
-                        }, label: {
-                            switch shouldEditViewAppiar {
-                            case true:
-                                Text("Готово")
-                            case false:
-                                Text("Править")
-                            }
-                            
-                        })
-                                                .foregroundColor(.red))
+                                                Button(
+                                                    action: {
+                                                        shouldEditViewAppiar.toggle()
+                                                    },
+                                                    label: {
+                                                        switch shouldEditViewAppiar {
+                                                        case true:
+                                                            Text("Готово")
+                                                        case false:
+                                                            Text("Править")
+                                                        }
+                                                })
+                                                    .foregroundColor(.red))
                 }
                 .tabItem {
                     Image("music_albums_fill 2")
@@ -55,12 +56,9 @@ struct ContentView: View {
                 }
                 
                 NavigationView{
-                    
-                    VStack {
-                        FindView(showCancelButton: $showCancelButton)
-                            .navigationTitle("Поиск")
-                    }
-                        
+                    FindView(showCancelButton: $showCancelButton)
+                        .environmentObject(picker)
+                        .navigationTitle("Поиск")
                 }
                 .tabItem {
                     Image(systemName: "magnifyingglass")
@@ -71,7 +69,6 @@ struct ContentView: View {
                 PlayerView()
                     .padding(.bottom, 49.0)
             }
-            
         }
     }
     
@@ -85,9 +82,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(pickerSelection: $pickerSelection)
+//    }
+//}
 

@@ -10,14 +10,15 @@ import SwiftUI
 struct FindField: View {
     @State private var searchText = ""
     @Binding var showCancelButton: Bool
-    
+    @EnvironmentObject var picker: PickerChoise
+
     var body: some View {
         VStack {
             HStack {
                 HStack {
                     Image(systemName: "magnifyingglass")
                     
-                    TextField("search", text: $searchText, onEditingChanged: { isEditing in
+                    TextField(picker.pickerSelection, text: $searchText, onEditingChanged: { isEditing in
                         self.showCancelButton = true
                     }, onCommit: {
                         print("onCommit")
@@ -58,9 +59,3 @@ extension UIApplication {
             .endEditing(force)
     }
 }
-
-//struct FindField_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FindField(showCancelButton: )
-//    }
-//}

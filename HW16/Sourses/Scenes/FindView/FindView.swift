@@ -14,17 +14,13 @@ struct FindView: View {
         
         VStack {
             FindField(showCancelButton: $showCancelButton)
-            ScrollView(.vertical, showsIndicators: false) {
-                switch showCancelButton {
-                case true:
-                    SearchFindView()
-                case false:
-                    VStack {
-                        Divider()
-                        StandartFindView()
-                    }
+            switch showCancelButton {
+            case true:
+                SearchView()
+            case false:
+                Divider()
+                StartFindView()
                     .padding(.horizontal, 20)
-                }
             }
         }
     }
