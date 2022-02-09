@@ -29,6 +29,7 @@
 		6D8B7B7B27AE793D009A600A /* MainHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8B7B7A27AE793D009A600A /* MainHorizontalCell.swift */; };
 		6D8B7B7D27AEBFCA009A600A /* SecondaryHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8B7B7C27AEBFCA009A600A /* SecondaryHorizontalCell.swift */; };
 		6D8B7B8327AF15AA009A600A /* ThirdHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8B7B8227AF15AA009A600A /* ThirdHorizontalCell.swift */; };
+		6D8B7B8527B3F0B0009A600A /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8B7B8427B3F0B0009A600A /* SearchResultCell.swift */; };
 		6DBB98CB27A45EFF00CA2DA3 /* RadioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBB98CA27A45EFF00CA2DA3 /* RadioModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		6D8B7B7A27AE793D009A600A /* MainHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHorizontalCell.swift; sourceTree = "<group>"; };
 		6D8B7B7C27AEBFCA009A600A /* SecondaryHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryHorizontalCell.swift; sourceTree = "<group>"; };
 		6D8B7B8227AF15AA009A600A /* ThirdHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdHorizontalCell.swift; sourceTree = "<group>"; };
+		6D8B7B8427B3F0B0009A600A /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		6DBB98CA27A45EFF00CA2DA3 /* RadioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				39983CF9279FF9D600ED3EE8 /* MediatecaView.swift */,
-				39983CFB27A1412900ED3EE8 /* PlayerView.swift */,
 				39983CFD27A1641100ED3EE8 /* ListView.swift */,
 				39983CFF27A16A7200ED3EE8 /* ListViewCell.swift */,
 			);
@@ -150,6 +151,7 @@
 			children = (
 				6D27D3B927AACD1A00929EFB /* SearchView.swift */,
 				390BB0E327AA77E1009B7309 /* FindField.swift */,
+				6D8B7B8427B3F0B0009A600A /* SearchResultCell.swift */,
 			);
 			path = SearchScreen;
 			sourceTree = "<group>";
@@ -208,6 +210,7 @@
 			children = (
 				39983CEB279FF0C500ED3EE8 /* HW16App.swift */,
 				39983CED279FF0C500ED3EE8 /* ContentView.swift */,
+				39983CFB27A1412900ED3EE8 /* PlayerView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				39983D0027A16A7200ED3EE8 /* ListViewCell.swift in Sources */,
 				39983CFC27A1412A00ED3EE8 /* PlayerView.swift in Sources */,
 				6D27D3C027AC388200929EFB /* CategoryView.swift in Sources */,
+				6D8B7B8527B3F0B0009A600A /* SearchResultCell.swift in Sources */,
 				39983D0E27A4168500ED3EE8 /* VerticalCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

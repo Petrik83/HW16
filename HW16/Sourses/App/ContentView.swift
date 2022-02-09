@@ -12,6 +12,8 @@ class PickerChoise: ObservableObject {
 }
 class SearchText: ObservableObject {
     @Published var searchText = ""
+    @Published var lastSearch = [SectionItem]()
+    @Published var searchResult = SectionItem(image: "mumiytroll", title: "Фантастика", subTitle: "")
 }
 
 struct ContentView: View {
@@ -73,6 +75,7 @@ struct ContentView: View {
             if !showCancelButton {
                 PlayerView()
                     .padding(.bottom, 49.0)
+                    .environmentObject(searchText)
             }
         }
     }

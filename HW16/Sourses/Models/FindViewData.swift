@@ -54,9 +54,9 @@ extension FindViewItem {
                                                                       SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Apple Music Поп на русском"),
                                                                       SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Apple Music Поп на русском"),
                                                                       SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Apple Music Поп на русском"),
-                                                                      SectionItem(image: "Глубокий сон", title: "Поп-волна", subTitle: "Apple Music Поп на русском"),
-                                                                      SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Apple Music Поп на русском"),
-                                                                      SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Apple Music Поп на русском")])),
+                                                                      SectionItem(image: "Глубокий сон", title: "Пип-волна", subTitle: "Upple Music Поп на русском"),
+                                                                      SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Upple Music Поп на русском"),
+                                                                      SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Upple Music Поп на русском")])),
             FindViewItem(
                 image: "Хип-хоп на русском", title: "Хип-хоп на русском", categoryViewItem:
                     CategoryViewItem(firstSectionItem:
@@ -68,14 +68,4 @@ extension FindViewItem {
             )]}
     
     static var findViewItem = FindViewItem.getFindViewData()
-    
-    static func toArray(incomingData: [FindViewItem]) -> [SectionItem] {
-        var array = [SectionItem]()
-        for i in 0..<incomingData.count {
-            for j in 0..<incomingData[i].categoryViewItem.therdSectionItem.count {
-                array.append(incomingData[i].categoryViewItem.therdSectionItem[j])
-            }
-        }
-        return array
-    }
 }

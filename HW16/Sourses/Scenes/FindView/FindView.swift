@@ -14,6 +14,9 @@ struct FindView: View {
         
         VStack {
             FindField(showCancelButton: $showCancelButton)
+//                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
+//                            PlayerView()
+//                        }
             switch showCancelButton {
             case true:
                 SearchView()

@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct FindField: View {
-//    let array = ["Peter", "Paul", "Mary", "Anna-Lena", "George", "John", "Greg", "Thomas", "Robert", "Bernie", "Mike", "Benno", "Hugo", "Miles", "Michael", "Mikel", "Tim", "Tom", "Lottie", "Lorrie", "Barbara"]
-var array = [String]()
+    
+    var array = [String]()
     @EnvironmentObject var searchText: SearchText
     @Binding var showCancelButton: Bool
     @EnvironmentObject var picker: PickerChoise
-
+    
     var body: some View {
         VStack {
             HStack {
@@ -48,7 +48,7 @@ var array = [String]()
             }
             .padding(.horizontal, 20)
             .navigationBarHidden(showCancelButton)
-//            .animation(.default)
+//                        .animation(.default)
         }
         
     }
@@ -59,7 +59,6 @@ extension UIApplication {
         self.windows
             .filter{$0.isKeyWindow}
             .first?
-        
             .endEditing(force)
     }
 }

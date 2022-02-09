@@ -17,7 +17,6 @@ struct ThirdHorizontalCell: View {
                 .cornerRadius(5)
                 .frame(width: 60, height: 60)
             VStack{
-                Divider()
                 HStack {
                     VStack(alignment: .leading) {
                         Text(thirdHorizontalCellItem.title)
