@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct FindField: View {
-    @State private var searchText = ""
+//    let array = ["Peter", "Paul", "Mary", "Anna-Lena", "George", "John", "Greg", "Thomas", "Robert", "Bernie", "Mike", "Benno", "Hugo", "Miles", "Michael", "Mikel", "Tim", "Tom", "Lottie", "Lorrie", "Barbara"]
+var array = [String]()
+    @EnvironmentObject var searchText: SearchText
     @Binding var showCancelButton: Bool
     @EnvironmentObject var picker: PickerChoise
 
@@ -18,16 +20,16 @@ struct FindField: View {
                 HStack {
                     Image(systemName: "magnifyingglass")
                     
-                    TextField(picker.pickerSelection, text: $searchText, onEditingChanged: { isEditing in
+                    TextField(picker.pickerSelection, text: $searchText.searchText, onEditingChanged: { isEditing in
                         self.showCancelButton = true
                     }, onCommit: {
                         print("onCommit")
                     }).foregroundColor(.primary)
                     
                     Button(action: {
-                        self.searchText = ""
+                        self.searchText.searchText = ""
                     }) {
-                        Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
+                        Image(systemName: "xmark.circle.fill").opacity(searchText.searchText == "" ? 0 : 1)
                     }
                 }
                 .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
@@ -38,7 +40,7 @@ struct FindField: View {
                 if showCancelButton  {
                     Button("Отмена") {
                         UIApplication.shared.endEditing(true)
-                        self.searchText = ""
+                        self.searchText.searchText = ""
                         self.showCancelButton = false
                     }
                     .foregroundColor(Color(.systemRed))
@@ -46,8 +48,9 @@ struct FindField: View {
             }
             .padding(.horizontal, 20)
             .navigationBarHidden(showCancelButton)
-            .animation(.default)
+//            .animation(.default)
         }
+        
     }
 }
 
@@ -56,6 +59,8 @@ extension UIApplication {
         self.windows
             .filter{$0.isKeyWindow}
             .first?
+        
             .endEditing(force)
     }
 }
+

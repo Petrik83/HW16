@@ -10,9 +10,13 @@ import SwiftUI
 class PickerChoise: ObservableObject {
     @Published var pickerSelection = "Apple Music"
 }
+class SearchText: ObservableObject {
+    @Published var searchText = ""
+}
 
 struct ContentView: View {
     @StateObject var picker = PickerChoise()
+    @StateObject var searchText = SearchText()
 
     @State var selection = Set<UUID>()
     @State var shouldEditViewAppiar = false
@@ -58,6 +62,7 @@ struct ContentView: View {
                 NavigationView{
                     FindView(showCancelButton: $showCancelButton)
                         .environmentObject(picker)
+                        .environmentObject(searchText)
                         .navigationTitle("Поиск")
                 }
                 .tabItem {
@@ -82,9 +87,9 @@ struct ContentView: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView(pickerSelection: $pickerSelection)
-//    }
-//}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
 

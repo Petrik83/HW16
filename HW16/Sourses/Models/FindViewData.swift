@@ -26,7 +26,7 @@ struct FirstSectionItem {
     let subTitle: String
 }
 
-struct SectionItem {
+struct SectionItem: Hashable {
     let image: String
     let title: String
     let subTitle: String
@@ -49,7 +49,7 @@ extension FindViewItem {
                                                    therdSectionItem: [SectionItem(image: "Глубокий сон", title: "Поп-волна", subTitle: "Apple Music Поп на русском"),
                                                                       SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Apple Music Поп на русском"),
                                                                       SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Apple Music Поп на русском"),
-                                                                      SectionItem(image: "Глубокий сон", title: "Поп-волна", subTitle: "Apple Music Поп на русском"),
+                                                                      SectionItem(image: "Глубокий сон", title: "Пип-волна", subTitle: "Apple Music Поп на русском"),
                                                                       SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Apple Music Поп на русском"),
                                                                       SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Apple Music Поп на русском"),
                                                                       SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Apple Music Поп на русском"),
@@ -66,7 +66,16 @@ extension FindViewItem {
                                                          SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Apple Music Поп на русском")], therdSectionItem: [SectionItem(image: "Колыбельные", title: "Поп-карамель", subTitle: "Apple Music Поп на русском")])
                 
             )]}
-            
+    
     static var findViewItem = FindViewItem.getFindViewData()
-
+    
+    static func toArray(incomingData: [FindViewItem]) -> [SectionItem] {
+        var array = [SectionItem]()
+        for i in 0..<incomingData.count {
+            for j in 0..<incomingData[i].categoryViewItem.therdSectionItem.count {
+                array.append(incomingData[i].categoryViewItem.therdSectionItem[j])
+            }
+        }
+        return array
+    }
 }
