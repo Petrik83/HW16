@@ -14,6 +14,7 @@ class SearchText: ObservableObject {
     @Published var searchText = ""
     @Published var lastSearch = [SectionItem]()
     @Published var searchResult = SectionItem(image: "mumiytroll", title: "Фантастика", subTitle: "")
+    @Published var showPlayerView: Bool = true
 }
 
 struct ContentView: View {
@@ -23,6 +24,7 @@ struct ContentView: View {
     @State var selection = Set<UUID>()
     @State var shouldEditViewAppiar = false
     @State var showCancelButton: Bool = false
+//    @State var showPlayerView: Bool = true
     @State var queryString = ""
     
     var body: some View {
@@ -72,7 +74,7 @@ struct ContentView: View {
                     Text("Поиск")
                 }
             }
-            if !showCancelButton {
+            if searchText.showPlayerView {
                 PlayerView()
                     .padding(.bottom, 49.0)
                     .environmentObject(searchText)
