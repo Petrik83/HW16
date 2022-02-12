@@ -36,6 +36,11 @@ struct FindField: View {
                 .foregroundColor(.secondary)
                 .background(Color(.secondarySystemBackground))
                 .cornerRadius(10.0)
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+                    searchText.showPlayerView = false
+                }.onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    searchText.showPlayerView = true
+                }
                 
                 if showCancelButton  {
                     Button("Отмена") {
@@ -50,6 +55,7 @@ struct FindField: View {
             .navigationBarHidden(showCancelButton)
 //                        .animation(.default)
         }
+        
         
     }
 }

@@ -12,9 +12,7 @@ struct SearchView: View {
     var columns = [GridItem(.flexible())]
     @EnvironmentObject var picker: PickerChoise
     @EnvironmentObject var searchText: SearchText
-    
-//    сделать клавиатуру убирающейся
-    
+        
     var body: some View {
         VStack {
             Picker(selection: $picker.pickerSelection, label: Text("")) {
@@ -48,6 +46,7 @@ struct SearchView: View {
                         Button {
                             searchText.searchResult = index
                             UIApplication.shared.endEditing(true)
+                            
                         } label: {
                             SearchResultCell(SearchResultCellItem: index)
                         }
@@ -70,8 +69,6 @@ struct SearchView: View {
                                 Spacer()
                             }
                         }
-
-
                     }
                     ForEach (searchFilter(incomingData: FindViewItem.findViewItem, text: searchText.searchText), id:\.self) { index in
                         Button {
@@ -80,7 +77,6 @@ struct SearchView: View {
                             UIApplication.shared.endEditing(true)
                         } label: {
                             SearchResultCell(SearchResultCellItem: index)
-                            
                         }
                     }
                 }
@@ -89,35 +85,35 @@ struct SearchView: View {
             }
         }
     }
-}
-
-func searchFilter(incomingData: [FindViewItem], text: String) -> [SectionItem] {
-    var array = [SectionItem]()
-    incomingData.forEach { item in
-        for i in 0..<item.categoryViewItem.therdSectionItem.count {
-            if text != "" {
-                if (item.categoryViewItem.therdSectionItem[i].title.hasPrefix(text) || item.categoryViewItem.therdSectionItem[i].subTitle.hasPrefix(text)) {
-                    array.append(item.categoryViewItem.therdSectionItem[i])
+    
+    func searchFilter(incomingData: [FindViewItem], text: String) -> [SectionItem] {
+        var array = [SectionItem]()
+        incomingData.forEach { item in
+            for i in 0..<item.categoryViewItem.therdSectionItem.count {
+                if text != "" {
+                    if (item.categoryViewItem.therdSectionItem[i].title.hasPrefix(text) || item.categoryViewItem.therdSectionItem[i].subTitle.hasPrefix(text)) {
+                        array.append(item.categoryViewItem.therdSectionItem[i])
+                    }
                 }
             }
         }
+        return Array(Set(array))
     }
-    return Array(Set(array))
-}
-
-func searchHints(incomingData: [FindViewItem], text: String) -> [String] {
-    var array = [String]()
-    incomingData.forEach { item in
-        for item in item.categoryViewItem.therdSectionItem {
-            if text != "" {
-                if item.title.hasPrefix(text) {
-                    array.append(item.title)
-                }
-                if item.subTitle.hasPrefix(text) {
-                    array.append(item.subTitle)
+    
+    func searchHints(incomingData: [FindViewItem], text: String) -> [String] {
+        var array = [String]()
+        incomingData.forEach { item in
+            for item in item.categoryViewItem.therdSectionItem {
+                if text != "" {
+                    if item.title.hasPrefix(text) {
+                        array.append(item.title)
+                    }
+                    if item.subTitle.hasPrefix(text) {
+                        array.append(item.subTitle)
+                    }
                 }
             }
         }
+        return Array(Set(array))
     }
-    return Array(Set(array))
 }
