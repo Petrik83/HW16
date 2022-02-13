@@ -9,9 +9,6 @@ import SwiftUI
 
 struct ListView: View {
     @Binding var selection: Set<UUID>
-    init(count: Binding<Set<UUID>>){
-        self._selection = count
-    }
     
     var body: some View {
         VStack {

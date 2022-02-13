@@ -7,9 +7,25 @@
 
 import SwiftUI
 
+class PickerChoise: ObservableObject {
+    @Published var pickerSelection = "Apple Music"
+}
+class SearchText: ObservableObject {
+    @Published var searchText = ""
+    @Published var lastSearch = [SectionItem]()
+    @Published var searchResult = SectionItem(image: "mumiytroll", title: "Фантастика", subTitle: "")
+    @Published var showPlayerView: Bool = true
+}
+
 struct ContentView: View {
+    @StateObject var picker = PickerChoise()
+    @StateObject var searchText = SearchText()
+
     @State var selection = Set<UUID>()
     @State var shouldEditViewAppiar = false
+    @State var showCancelButton: Bool = false
+//    @State var showPlayerView: Bool = true
+    @State var queryString = ""
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -46,7 +62,9 @@ struct ContentView: View {
                 }
                 
                 NavigationView{
-                    Text("Поиск")
+                    FindView(showCancelButton: $showCancelButton)
+                        .environmentObject(picker)
+                        .environmentObject(searchText)
                         .navigationTitle("Поиск")
                 }
                     .tabItem {
@@ -54,16 +72,18 @@ struct ContentView: View {
                         Text("Поиск")
                     }
             }
-            
-            PlayerView()
-                .padding(.bottom, Metric.playerViewPadding)
+            if searchText.showPlayerView {
+                PlayerView()
+                    .padding(.bottom, 49.0)
+                    .environmentObject(searchText)
+            }
         }
     }
     
     func screenSelection(editViewAppiar: Bool) -> AnyView {
         switch editViewAppiar {
         case true:
-            return AnyView(ListView(count: $selection))
+            return AnyView(ListView(selection: $selection))
         case false:
             return AnyView(MediatecaView())
         }
