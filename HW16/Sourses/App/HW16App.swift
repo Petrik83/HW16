@@ -7,12 +7,28 @@
 
 import SwiftUI
 
+class PlayerPresenter: ObservableObject {
+    @Published var showMaxPlayer = false
+    @Published var showPlayerView: Bool = true
+}
+
+class SearchText: ObservableObject {
+    @Published var searchText = ""
+    @Published var lastSearch = [SectionItem]()
+    @Published var searchResult = SectionItem(image: "mumiytroll", title: "Фантастика", subTitle: "")
+}
+
 @main
 struct HW16App: App {
+    @StateObject var playerPresenter = PlayerPresenter()
+    @StateObject var searchText = SearchText()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(playerPresenter)
+                .environmentObject(searchText)
+
         }
     }
 }

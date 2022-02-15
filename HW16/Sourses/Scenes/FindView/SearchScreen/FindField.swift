@@ -13,6 +13,7 @@ struct FindField: View {
     @EnvironmentObject var searchText: SearchText
     @Binding var showCancelButton: Bool
     @EnvironmentObject var picker: PickerChoise
+    @EnvironmentObject var playerPresenter: PlayerPresenter
     
     var body: some View {
         VStack {
@@ -37,10 +38,10 @@ struct FindField: View {
                 .background(Color(.secondarySystemBackground))
                 .cornerRadius(10.0)
                 .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
-                    searchText.showPlayerView = false
+                    playerPresenter.showPlayerView = false
                 }
                 .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
-                    searchText.showPlayerView = true
+                    playerPresenter.showPlayerView = true
                 }
                 
                 if showCancelButton  {
