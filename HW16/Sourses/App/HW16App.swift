@@ -10,12 +10,13 @@ import SwiftUI
 class PlayerPresenter: ObservableObject {
     @Published var showMaxPlayer = false
     @Published var showPlayerView: Bool = true
+    @Published var isPlayButtonPressed = false
 }
 
 class SearchText: ObservableObject {
     @Published var searchText = ""
     @Published var lastSearch = [SectionItem]()
-    @Published var searchResult = SectionItem(image: "mumiytroll", title: "Фантастика", subTitle: "")
+    @Published var searchResult = SectionItem(image: "Не исполняется", title: "Не исполняется", subTitle: "", compositionDuration: 1)
 }
 
 @main
