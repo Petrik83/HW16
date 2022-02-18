@@ -11,6 +11,8 @@ class PlayerPresenter: ObservableObject {
     @Published var showMaxPlayer = false
     @Published var showPlayerView: Bool = true
     @Published var isPlayButtonPressed = false
+    @Published var timerSlider: Double = 0
+
 }
 
 class SearchText: ObservableObject {

@@ -10,6 +10,8 @@ import SwiftUI
 struct ThirdHorizontalCell: View {
     var thirdHorizontalCellItem: SectionItem
     @EnvironmentObject var searchText: SearchText
+    @EnvironmentObject var playerPresenter: PlayerPresenter
+
     
     
     var body: some View {
@@ -31,6 +33,7 @@ struct ThirdHorizontalCell: View {
             HStack {
                 Button {
                     searchText.searchResult = thirdHorizontalCellItem
+                    playerPresenter.timerSlider = 0
                 } label: {
                     Rectangle()
                         .foregroundColor(Color(UIColor.clear))

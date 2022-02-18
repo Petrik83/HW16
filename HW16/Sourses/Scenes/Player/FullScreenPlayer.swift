@@ -11,8 +11,8 @@ import MediaPlayer
 struct FullScreenPlayer: View {
     @EnvironmentObject var searchText: SearchText
     @EnvironmentObject var playerPresenter: PlayerPresenter
-    @State private var timerSlider: Double = 0
-
+//    @State private var timerSlider: Double = 0
+    
     @State private var volumeSlider: Float = 0
     @State var slayderTimer: Timer? = nil
     
@@ -27,10 +27,10 @@ struct FullScreenPlayer: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             if playerPresenter.showMaxPlayer {
-//                Color.white
-//                    .opacity(0.3)
-//                    .ignoresSafeArea()
-//
+                //                Color.white
+                //                    .opacity(0.3)
+                //                    .ignoresSafeArea()
+                //
                 VStack{
                     ZStack {
                         Capsule()
@@ -56,7 +56,11 @@ struct FullScreenPlayer: View {
                                     .resizable()
                                     .frame(width: curentImageHeight, height: curentImageHeight)
                                     .cornerRadius(10)
+                                
                             }
+//                            .onChange(of: searchText.searchResult.image) { newValue in
+//                                self.timerSlider = 0
+//                            }
                             VStack{
                                 HStack{
                                     VStack(alignment: .leading){
@@ -78,18 +82,18 @@ struct FullScreenPlayer: View {
                                     }
                                 }
                                 
-                                Slider(value: $timerSlider, in: 0...searchText.searchResult.compositionDuration)
+                                Slider(value: $playerPresenter.timerSlider, in: 0...searchText.searchResult.compositionDuration)
                                     .accentColor(.gray)
                                 
                                 HStack{
-                                    Text(timeConverter(time: Int(timerSlider)))
+                                    Text(timeConverter(time: Int(playerPresenter.timerSlider)))
                                     Spacer()
-                                    Text("-\(timeConverter(time:Int(abs(timerSlider - searchText.searchResult.compositionDuration))))")
+                                    Text("-\(timeConverter(time:Int(abs(playerPresenter.timerSlider - searchText.searchResult.compositionDuration))))")
                                 }
                                 .foregroundColor(.white)
                                 .font(.system(size: 12))
-
-
+                                
+                                
                             }
                             .padding(.horizontal, 30)
                             
@@ -97,7 +101,7 @@ struct FullScreenPlayer: View {
                             HStack{
                                 Spacer()
                                 Button {
-                                    timerSlider = 0
+                                    playerPresenter.timerSlider = 0
                                 } label: {
                                     Image(systemName: "backward.fill")
                                         .font(.title)
@@ -128,11 +132,11 @@ struct FullScreenPlayer: View {
                                     }
                                 }
                                 .font(.system(size: 45))
-
+                                
                                 
                                 Spacer()
                                 Button {
-                                    timerSlider = searchText.searchResult.compositionDuration
+                                    playerPresenter.timerSlider = searchText.searchResult.compositionDuration
                                 } label: {
                                     Image(systemName: "forward.fill")
                                         .font(.title)
@@ -140,7 +144,7 @@ struct FullScreenPlayer: View {
                                 Spacer()
                             }
                             .foregroundColor(.white)
-
+                            
                             Spacer()
                             VStack(spacing: 20) {
                                 HStack{
@@ -173,7 +177,7 @@ struct FullScreenPlayer: View {
                                     
                                 }
                                 .foregroundStyle(Color(uiColor: .systemGray3))
-
+                                
                             }
                             .padding(.vertical, 10)
                             .padding(.horizontal, 30)
@@ -213,7 +217,7 @@ struct FullScreenPlayer: View {
             .onChanged { val in
                 let dragAmount = val.translation.height - prevDrugTranslations.height
                 if curHeight <= fullHeight {
-                curHeight -= dragAmount
+                    curHeight -= dragAmount
                     prevDrugTranslations = val.translation
                 }
             }
@@ -230,22 +234,21 @@ struct FullScreenPlayer: View {
     
     func startTimer() {
         slayderTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true){ tempTimer in
-            if timerSlider <= searchText.searchResult.compositionDuration {
-                timerSlider += 1
+            if playerPresenter.timerSlider <= searchText.searchResult.compositionDuration {
+                playerPresenter.timerSlider += 1
                 
             } else {
                 slayderTimer?.invalidate()
                 slayderTimer = nil
                 playerPresenter.isPlayButtonPressed = false
-                
             }
         }
-      }
+    }
     
     func stopTimer() {
         slayderTimer?.invalidate()
         slayderTimer = nil
-      }
+    }
     func timeConverter (time: Int) -> String {
         let timeWithoutMilisec = time / 100
         let minutes = Int(timeWithoutMilisec) / 60 % 60
@@ -258,7 +261,7 @@ extension MPVolumeView {
     static func setVolume(_ volume: Float) {
         let volumeView = MPVolumeView()
         let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
-
+        
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
             slider?.value = volume
         }
