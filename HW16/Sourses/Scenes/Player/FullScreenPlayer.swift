@@ -6,41 +6,35 @@
 //
 
 import SwiftUI
-import MediaPlayer
 
 struct FullScreenPlayer: View {
     @EnvironmentObject var searchText: SearchText
     @EnvironmentObject var playerPresenter: PlayerPresenter
-//    @State private var timerSlider: Double = 0
     
     @State private var volumeSlider: Float = 0
     @State var slayderTimer: Timer? = nil
+    @State private var curentImageHeight: CGFloat = UIScreen.main.bounds.width/5*3
+    @State private var curHeight: CGFloat = UIScreen.main.bounds.height
     
     let fullHeight: CGFloat = UIScreen.main.bounds.height
     let minHeight: CGFloat = UIScreen.main.bounds.height / 2 + 100
     
     let pauseImageHeight: CGFloat = UIScreen.main.bounds.width/5*4
     let playImageHeight: CGFloat = UIScreen.main.bounds.width/5*3
-    @State private var curentImageHeight: CGFloat = UIScreen.main.bounds.width/5*3
-    @State private var curHeight: CGFloat = UIScreen.main.bounds.height
     
     var body: some View {
         ZStack(alignment: .bottom) {
             if playerPresenter.showMaxPlayer {
-                //                Color.white
-                //                    .opacity(0.3)
-                //                    .ignoresSafeArea()
-                //
                 VStack{
                     ZStack {
                         Capsule()
                             .foregroundColor(.gray)
-                            .frame(width: 40, height: 6)
+                            .frame(width: FullScreenPlayerMetric.capsuleW, height: FullScreenPlayerMetric.capsuleH)
                             .onTapGesture {
                                 playerPresenter.showMaxPlayer = false
                             }
                     }
-                    .frame(height: 100)
+                    .frame(height: FullScreenPlayerMetric.capsuleStackH)
                     .frame(maxWidth: .infinity)
                     .background(Color(uiColor: .clear))
                     .gesture(dragGesture)
@@ -51,25 +45,21 @@ struct FullScreenPlayer: View {
                                 Rectangle()
                                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
                                     .foregroundColor(Color(uiColor: .clear))
-                                
                                 Image(searchText.searchResult.image)
                                     .resizable()
                                     .frame(width: curentImageHeight, height: curentImageHeight)
-                                    .cornerRadius(10)
-                                
+                                    .cornerRadius(FullScreenPlayerMetric.imageCornerRadius)
                             }
-//                            .onChange(of: searchText.searchResult.image) { newValue in
-//                                self.timerSlider = 0
-//                            }
+                            
                             VStack{
                                 HStack{
                                     VStack(alignment: .leading){
                                         Text(searchText.searchResult.title)
                                             .foregroundColor(.white)
-                                            .font(.system(size: 28, weight: .medium, design: .default))
+                                            .font(.system(size: FullScreenPlayerMetric.titleFontSize, weight: .medium, design: .default))
                                         Text(searchText.searchResult.subTitle)
                                             .foregroundStyle(Color(uiColor: .systemGray3))
-                                            .font(.system(size: 22, weight: .regular, design: .default))
+                                            .font(.system(size: FullScreenPlayerMetric.subTitleFontSize, weight: .regular, design: .default))
                                     }
                                     Spacer()
                                     Button {
@@ -77,7 +67,7 @@ struct FullScreenPlayer: View {
                                     } label: {
                                         Image(systemName: "ellipsis.circle.fill")
                                             .symbolRenderingMode(.palette)
-                                            .foregroundStyle(Color.white, Color(uiColor: .systemGray).opacity(0.4))
+                                            .foregroundStyle(Color.white, Color(uiColor: .systemGray).opacity(FullScreenPlayerMetric.buttonImageOpacity))
                                             .font(.title)
                                     }
                                 }
@@ -91,11 +81,9 @@ struct FullScreenPlayer: View {
                                     Text("-\(timeConverter(time:Int(abs(playerPresenter.timerSlider - searchText.searchResult.compositionDuration))))")
                                 }
                                 .foregroundColor(.white)
-                                .font(.system(size: 12))
-                                
-                                
+                                .font(.system(size: FullScreenPlayerMetric.timerFontSize))
                             }
-                            .padding(.horizontal, 30)
+                            .padding(.horizontal, FullScreenPlayerMetric.timerSliderPadding)
                             
                             Spacer()
                             HStack{
@@ -131,9 +119,7 @@ struct FullScreenPlayer: View {
                                         Image(systemName: "play.fill")
                                     }
                                 }
-                                .font(.system(size: 45))
-                                
-                                
+                                .font(.system(size: FullScreenPlayerMetric.playButtonSize))
                                 Spacer()
                                 Button {
                                     playerPresenter.timerSlider = searchText.searchResult.compositionDuration
@@ -146,61 +132,51 @@ struct FullScreenPlayer: View {
                             .foregroundColor(.white)
                             
                             Spacer()
-                            VStack(spacing: 20) {
+                            VStack(spacing: FullScreenPlayerMetric.volumeContrStackSpacing) {
                                 HStack{
                                     Image(systemName: "speaker.fill")
-                                        .font(.system(size: 12))
+                                        .font(.system(size: FullScreenPlayerMetric.volumeContrIconSize))
                                         .foregroundStyle(Color(uiColor: .systemGray5))
                                     
-                                    Slider(value: $volumeSlider, in: 0...1,step: 0.0625, onEditingChanged: { data in
-                                        MPVolumeView.setVolume(self.volumeSlider)
+                                    Slider(value: $volumeSlider, in: 0...1, onEditingChanged: { data in
                                     })
                                         .accentColor(.gray)
                                     
                                     Image(systemName: "speaker.wave.2.fill")
-                                        .font(.system(size: 12))
+                                        .font(.system(size: FullScreenPlayerMetric.volumeContrIconSize))
                                         .foregroundStyle(Color(uiColor: .systemGray5))
                                 }
+                                
                                 HStack{
                                     Spacer()
                                     Image(systemName: "quote.bubble")
-                                        .font(.system(size: 24))
                                     Spacer()
                                     Image(systemName: "airplayaudio")
-                                        .font(.system(size: 24))
-                                    
                                     Spacer()
                                     Image(systemName: "list.bullet")
-                                        .font(.system(size: 24))
-                                    
                                     Spacer()
-                                    
                                 }
+                                .font(.system(size: FullScreenPlayerMetric.tabBarIconSize))
                                 .foregroundStyle(Color(uiColor: .systemGray3))
-                                
                             }
-                            .padding(.vertical, 10)
-                            .padding(.horizontal, 30)
+                            .padding(.vertical, FullScreenPlayerMetric.volumeContrVertPadding)
+                            .padding(.horizontal, FullScreenPlayerMetric.volumeContrHorizPadding)
                         }
-                        
-                        
-                        
-                        
                     }
                     .frame(maxHeight: .infinity)
-                    .padding(.bottom, 35)
-                    
+                    .padding(.bottom, FullScreenPlayerMetric.bottomPadding)
                 }
                 .frame(maxHeight: fullHeight)
                 .frame(maxWidth: .infinity)
                 .background(
+                    
                     ZStack{
                         Rectangle()
                             .frame(height: fullHeight)
                             .foregroundColor(.white)
-                        Image(searchText.searchResult.image).resizable().blur(radius: 50)
+                        Image(searchText.searchResult.image).resizable().blur(radius: FullScreenPlayerMetric.backgroundBlurRadius)
                     }
-                        .cornerRadius(30)
+                        .cornerRadius(FullScreenPlayerMetric.backgroundCornerRadius)
                 )
                 .transition(.move(edge: .bottom))
             }
@@ -210,10 +186,12 @@ struct FullScreenPlayer: View {
         .ignoresSafeArea()
         .animation(.easeInOut)
     }
+    
     @State private var prevDrugTranslations = CGSize.zero
     
     var dragGesture: some Gesture {
         DragGesture(minimumDistance: 0, coordinateSpace: .global)
+        
             .onChanged { val in
                 let dragAmount = val.translation.height - prevDrugTranslations.height
                 if curHeight <= fullHeight {
@@ -221,6 +199,7 @@ struct FullScreenPlayer: View {
                     prevDrugTranslations = val.translation
                 }
             }
+        
             .onEnded { val in
                 prevDrugTranslations = .zero
                 if curHeight > minHeight {
@@ -236,7 +215,6 @@ struct FullScreenPlayer: View {
         slayderTimer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true){ tempTimer in
             if playerPresenter.timerSlider <= searchText.searchResult.compositionDuration {
                 playerPresenter.timerSlider += 1
-                
             } else {
                 slayderTimer?.invalidate()
                 slayderTimer = nil
@@ -249,6 +227,7 @@ struct FullScreenPlayer: View {
         slayderTimer?.invalidate()
         slayderTimer = nil
     }
+    
     func timeConverter (time: Int) -> String {
         let timeWithoutMilisec = time / 100
         let minutes = Int(timeWithoutMilisec) / 60 % 60
@@ -257,19 +236,32 @@ struct FullScreenPlayer: View {
     }
 }
 
-extension MPVolumeView {
-    static func setVolume(_ volume: Float) {
-        let volumeView = MPVolumeView()
-        let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
-            slider?.value = volume
-        }
-    }
+enum FullScreenPlayerMetric {
+    static let capsuleW = 40.0
+    static let capsuleH = 6.0
+    static let capsuleStackH = 100.0
+    
+    static let imageCornerRadius = 10.0
+    
+    static let titleFontSize = 28.0
+    static let subTitleFontSize = 22.0
+    
+    static let buttonImageOpacity = 0.4
+    
+    static let timerFontSize = 12.0
+    static let timerSliderPadding = 30.0
+    
+    static let playButtonSize = 45.0
+    
+    static let volumeContrStackSpacing = 20.0
+    static let volumeContrIconSize = 12.0
+    static let volumeContrVertPadding = 10.0
+    static let volumeContrHorizPadding = 30.0
+    
+    static let tabBarIconSize = 24.0
+    
+    static let bottomPadding = 35.0
+    
+    static let backgroundBlurRadius = 50.0
+    static let backgroundCornerRadius = 30.0
 }
-
-//struct FullScreenPlayer_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FullScreenPlayer(isPresented: .constant(false))
-//    }
-//}

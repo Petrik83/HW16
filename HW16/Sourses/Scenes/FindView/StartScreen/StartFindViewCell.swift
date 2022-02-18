@@ -12,29 +12,34 @@ struct StartFindViewCell: View {
     
     var body: some View {
         GeometryReader { geometry in
-                NavigationLink {
-                    CategoryView(categoryItem: cellData.categoryViewItem, title: cellData.title)
-                        .navigationBarHidden(true)
-                } label: {
+            NavigationLink {
+                CategoryView(categoryItem: cellData.categoryViewItem, title: cellData.title)
+                    .navigationBarHidden(true)
+            } label: {
+                ZStack(alignment: .leading) {
+                    Image(cellData.image)
+                        .resizable()
+                        .cornerRadius(StartFindViewCellMetric.cornerRadius)
+                        .padding(.horizontal,StartFindViewCellMetric.imagePadding)
                     
-                    ZStack(alignment: .leading) {
-                        Image(cellData.image)
-                            .resizable()
-                            .cornerRadius(10)
-                        .padding(.horizontal,3)
-                        VStack {
-                            Spacer()
-                            Text(cellData.title)
-                                .foregroundColor(.white)
-                                .font(Font.body.bold())
-                                .multilineTextAlignment(.leading)
-                                .padding([.bottom, .leading], 10)
-                                
-                        }
+                    VStack {
+                        Spacer()
+                        Text(cellData.title)
+                            .foregroundColor(.white)
+                            .font(Font.body.bold())
+                            .multilineTextAlignment(.leading)
+                            .padding([.bottom, .leading], StartFindViewCellMetric.textPadding)
                     }
+                }
             }
         }
     }
+}
+
+enum StartFindViewCellMetric {
+    static let cornerRadius = 10.0
+    static let imagePadding = 3.0
+    static let textPadding = 10.0
 }
 
 struct StartFindViewCell_Previews: PreviewProvider {
@@ -43,3 +48,5 @@ struct StartFindViewCell_Previews: PreviewProvider {
             .frame(width: 300, height: 150)
     }
 }
+
+

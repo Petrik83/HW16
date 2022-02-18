@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct SecondaryHorizontalCell: View {
+    
     var secondaryHorizontalCellItem: SectionItem
     
     var body: some View {
         VStack(alignment: .leading) {
             Image(secondaryHorizontalCellItem.image)
                 .resizable()
-                .cornerRadius(10)
+                .cornerRadius(SecondaryHorizontalCellMetric.cornerRadius)
             Text(secondaryHorizontalCellItem.title)
                 .lineLimit(1)
             Text(secondaryHorizontalCellItem.subTitle)
@@ -23,6 +24,10 @@ struct SecondaryHorizontalCell: View {
         }
         .padding(.leading)
     }
+}
+
+enum SecondaryHorizontalCellMetric {
+    static let cornerRadius = 10.0
 }
 
 struct SecondaryHorizontalCell_Previews: PreviewProvider {

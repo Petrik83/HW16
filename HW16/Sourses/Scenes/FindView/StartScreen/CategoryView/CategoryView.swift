@@ -13,9 +13,9 @@ struct CategoryView: View {
     var categoryItem: CategoryViewItem
     var title = String()
     let rows = [GridItem(.flexible())]
-    let secondRows = [GridItem(.fixed(UIScreen.main.bounds.width*0.53)),
-                      GridItem(.fixed(UIScreen.main.bounds.width*0.53))]
-    let thirdRows: [GridItem] = Array(repeating: .init(.fixed(60)), count: 4)
+    let secondRows = [GridItem(.fixed(UIScreen.main.bounds.width * CategoryViewMetric.secondRowsScale)),
+                      GridItem(.fixed(UIScreen.main.bounds.width * CategoryViewMetric.secondRowsScale))]
+    let thirdRows: [GridItem] = Array(repeating: .init(.fixed(CategoryViewMetric.thirdRowsHeight)), count: CategoryViewMetric.thirdRowsCount)
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -37,11 +37,11 @@ struct CategoryView: View {
                         .font(.title)
                 }
             }
-            .padding(.horizontal, 5)
+            .padding(.horizontal, CategoryViewMetric.buttonsPadding)
             Text(title)
                 .font(.title.bold())
-                .padding(.bottom, -5)
-                .padding(.leading, 20)
+                .padding(.bottom, CategoryViewMetric.titleTextPaddingBottom)
+                .padding(.leading, CategoryViewMetric.titleTextPaddingLeading)
             
             Divider()
             
@@ -50,7 +50,7 @@ struct CategoryView: View {
                     LazyHGrid(rows: rows) {
                         ForEach(0..<categoryItem.firstSectionItem.count) {index in
                             MainHorizontalCell(mainHorizontalCellItem: categoryItem.firstSectionItem[index])
-                                .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 0.9)
+                                .frame(width: UIScreen.main.bounds.width * CategoryViewMetric.firstLazyHGridScale, height: UIScreen.main.bounds.width * CategoryViewMetric.firstLazyHGridScale)
                         }
                     }
                 }
@@ -72,7 +72,7 @@ struct CategoryView: View {
                     LazyHGrid(rows: secondRows, spacing: 0) {
                         ForEach(0..<categoryItem.secondSectionItem.count) {index in
                             SecondaryHorizontalCell(secondaryHorizontalCellItem: categoryItem.secondSectionItem[index])
-                                .frame(width: UIScreen.main.bounds.width*0.47)
+                                .frame(width: UIScreen.main.bounds.width * CategoryViewMetric.secondLazyHGridScale)
                         }
                     }
                 }
@@ -91,20 +91,36 @@ struct CategoryView: View {
                 }
                 .padding(.horizontal)
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHGrid(rows: thirdRows, spacing: 1) {
+                    LazyHGrid(rows: thirdRows, spacing: CategoryViewMetric.thirdLazyHGridSpacing) {
                         ForEach(0..<categoryItem.therdSectionItem.count) { index in
                             ThirdHorizontalCell(thirdHorizontalCellItem: categoryItem.therdSectionItem[index])
-                                .frame(width: UIScreen.main.bounds.width*0.93)
+                                .frame(width: UIScreen.main.bounds.width * CategoryViewMetric.thirdLazyHGridScale)
                         }
                     }
                 }
-                .padding(.bottom, 80)
+                .padding(.bottom, CategoryViewMetric.thirdLazyHGridPadding)
             }
         }
     }
 }
 
+enum CategoryViewMetric {
+    static let secondRowsScale = 0.53
 
+    static let thirdRowsHeight = 60.0
+    static let thirdRowsCount = 4
+    
+    static let buttonsPadding = 5.0
+    
+    static let titleTextPaddingBottom = -5.0
+    static let titleTextPaddingLeading = 20.0
+    
+    static let firstLazyHGridScale = 0.9
+    static let secondLazyHGridScale = 0.47
+    static let thirdLazyHGridSpacing = 1.0
+    static let thirdLazyHGridScale = 0.93
+    static let thirdLazyHGridPadding = 80.0
+}
 
 struct StandartFindMoreInfo_Previews: PreviewProvider {
     static var previews: some View {

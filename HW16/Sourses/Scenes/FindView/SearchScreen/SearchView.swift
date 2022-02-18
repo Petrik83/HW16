@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct SearchView: View {
+    
     var pickerChoices = ["Apple Music", "Ваша Медиатека"]
     var columns = [GridItem(.flexible())]
     @EnvironmentObject var picker: PickerChoise
     @EnvironmentObject var searchText: SearchText
     @EnvironmentObject var playerPresenter: PlayerPresenter
-
+    
     var body: some View {
         VStack {
             Picker(selection: $picker.pickerSelection, label: Text("")) {
@@ -22,7 +23,7 @@ struct SearchView: View {
                 }
             }
             .pickerStyle(.segmented)
-            .padding(.horizontal, 20)
+            .padding(.horizontal, SearchViewMetric.horizontalPadding)
             Spacer()
             
             if searchText.searchText == "" {
@@ -39,7 +40,7 @@ struct SearchView: View {
                                 .font(Font.body.bold())
                         }
                     }
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, SearchViewMetric.horizontalPadding)
                 }
                 
                 List{
@@ -48,7 +49,6 @@ struct SearchView: View {
                             searchText.searchResult = index
                             playerPresenter.timerSlider = 0
                             UIApplication.shared.endEditing(true)
-                            
                         } label: {
                             SearchResultCell(SearchResultCellItem: index)
                         }
@@ -61,11 +61,10 @@ struct SearchView: View {
                     ForEach(searchHints(incomingData: FindViewItem.findViewItem, text: searchText.searchText), id:\.self) { index in
                         Button {
                             searchText.searchText = index
-                            
                         } label: {
-                            HStack(spacing: 0) {
+                            HStack(spacing: SearchViewMetric.spacing) {
                                 Image(systemName: "magnifyingglass")
-                                    .padding(.trailing, 10)
+                                    .padding(.trailing, SearchViewMetric.trailingPadding)
                                 Text(searchText.searchText)
                                 Text(index.dropFirst(searchText.searchText.count))
                                     .foregroundColor(.secondary)
@@ -73,11 +72,11 @@ struct SearchView: View {
                             }
                         }
                     }
+                    
                     ForEach (searchFilter(incomingData: FindViewItem.findViewItem, text: searchText.searchText), id:\.self) { index in
                         Button {
                             searchText.searchResult = index
                             playerPresenter.timerSlider = 0
-
                             searchText.lastSearch.append(index)
                             UIApplication.shared.endEditing(true)
                         } label: {
@@ -121,4 +120,11 @@ struct SearchView: View {
         }
         return Array(Set(array))
     }
+}
+
+enum SearchViewMetric {
+    static let horizontalPadding = 20.0
+    static let trailingPadding = 10.0
+    static let spacing = 0.0
+
 }

@@ -20,8 +20,12 @@ struct FindView: View {
             case false:
                 Divider()
                 StartFindView()
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, FindViewMetric.findViewPadding)
             }
         }
     }
+}
+
+enum FindViewMetric {
+    static let findViewPadding = 20.0
 }

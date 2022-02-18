@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-    // исправить баг с началом новой песни
 
 class PickerChoise: ObservableObject {
     @Published var pickerSelection = "Apple Music"
@@ -14,7 +13,7 @@ class PickerChoise: ObservableObject {
 
 struct ContentView: View {
     @StateObject var picker = PickerChoise()
-
+    
     @State var selection = Set<UUID>()
     @State var shouldEditViewAppiar = false
     @State var showCancelButton: Bool = false
@@ -30,15 +29,15 @@ struct ContentView: View {
                         .navigationTitle("Медиатека")
                         .navigationBarItems(trailing:
                                                 Button(action: {
-                                                    shouldEditViewAppiar.toggle()
-                                                    }, label: {
-                                                    switch shouldEditViewAppiar {
-                                                    case true:
-                                                        Text("Готово")
-                                                    case false:
-                                                        Text("Править")
-                                                    }
-                                                    })
+                            shouldEditViewAppiar.toggle()
+                        }, label: {
+                            switch shouldEditViewAppiar {
+                            case true:
+                                Text("Готово")
+                            case false:
+                                Text("Править")
+                            }
+                        })
                                                 .foregroundColor(.red))
                 }
                 .tabItem {
@@ -61,17 +60,17 @@ struct ContentView: View {
                         .environmentObject(picker)
                         .navigationTitle("Поиск")
                 }
-                    .tabItem {
-                        Image(systemName: "magnifyingglass")
-                        Text("Поиск")
-                    }
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Поиск")
+                }
             }
             
             if playerPresenter.showPlayerView {
                 PlayerView()
-                    .padding(.bottom, 49.0)
+                    .padding(.bottom, Metric.playerViewPadding)
             }
-                FullScreenPlayer()
+            FullScreenPlayer()
         }
     }
     
@@ -85,11 +84,6 @@ struct ContentView: View {
     }
 }
 
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
 
 enum Metric {
     static let playerViewPadding = 45.0

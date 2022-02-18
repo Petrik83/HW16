@@ -13,8 +13,9 @@ struct SearchResultCell: View {
         HStack {
             Image(SearchResultCellItem.image)
                 .resizable()
-                .cornerRadius(5)
-                .frame(width: 60, height: 60)
+                .cornerRadius(SearchResultCellMetric.cornerRadius)
+                .frame(width: SearchResultCellMetric.frameSize,
+                       height: SearchResultCellMetric.frameSize)
             VStack{
                 HStack {
                     VStack(alignment: .leading) {
@@ -35,6 +36,10 @@ struct SearchResultCell: View {
     }
 }
 
+enum SearchResultCellMetric {
+    static let cornerRadius = 5.0
+    static let frameSize = 60.0
+}
 
 struct SearchResultCell_Previews: PreviewProvider {
     static var previews: some View {

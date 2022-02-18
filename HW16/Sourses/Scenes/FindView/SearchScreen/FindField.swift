@@ -33,10 +33,13 @@ struct FindField: View {
                         Image(systemName: "xmark.circle.fill").opacity(searchText.searchText == "" ? 0 : 1)
                     }
                 }
-                .padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+                .padding(EdgeInsets(top: FindFieldMetric.paddingTop,
+                                    leading: FindFieldMetric.paddingLeading,
+                                    bottom: FindFieldMetric.paddingBottom,
+                                    trailing: FindFieldMetric.paddingTrailing))
                 .foregroundColor(.secondary)
                 .background(Color(.secondarySystemBackground))
-                .cornerRadius(10.0)
+                .cornerRadius(FindFieldMetric.cornerRadius)
                 .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
                     playerPresenter.showPlayerView = false
                 }
@@ -53,10 +56,20 @@ struct FindField: View {
                     .foregroundColor(Color(.systemRed))
                 }
             }
-            .padding(.horizontal, 20)
+            .padding(.horizontal, FindFieldMetric.paddingHorizontal)
             .navigationBarHidden(showCancelButton)
         }
     }
+}
+
+enum FindFieldMetric {
+    static let cornerRadius = 10.0
+    static let paddingTop = 8.0
+    static let paddingLeading = 6.0
+    static let paddingBottom = 8.0
+    static let paddingTrailing = 6.0
+
+    static let paddingHorizontal = 20.0
 }
 
 extension UIApplication {
