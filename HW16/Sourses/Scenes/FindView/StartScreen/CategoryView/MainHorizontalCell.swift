@@ -22,6 +22,7 @@ struct MainHorizontalCell: View {
                 .foregroundColor(.secondary)
             Image(mainHorizontalCellItem.image)
                 .resizable()
+                .aspectRatio(contentMode: .fit)
                 .cornerRadius(20)
         }
         .padding(.leading)

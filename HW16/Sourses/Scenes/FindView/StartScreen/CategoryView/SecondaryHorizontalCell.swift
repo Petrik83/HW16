@@ -16,6 +16,7 @@ struct SecondaryHorizontalCell: View {
                 .resizable()
                 .cornerRadius(10)
             Text(secondaryHorizontalCellItem.title)
+                .lineLimit(1)
             Text(secondaryHorizontalCellItem.subTitle)
                 .lineLimit(1)
                 .foregroundColor(.secondary)

@@ -9,13 +9,19 @@ import SwiftUI
 
 struct PlayerView: View {
     @EnvironmentObject var searchText: SearchText
+    @EnvironmentObject var playerPresenter: PlayerPresenter
     
     var body: some View {
         ZStack {
             Rectangle()
                 .frame(height: PlayerViewMetric.rectangleHeight)
                 .foregroundColor(Color.init(UIColor.systemBackground))
-                .opacity(0.95)                
+                .opacity(0.95)
+                .blur(radius: PlayerViewMetric.rectangleBlur)
+                .onTapGesture {
+                    playerPresenter.showMaxPlayer = true
+                }
+            
             HStack {
                 Image(searchText.searchResult.image)
                         .resizable()
@@ -43,11 +49,11 @@ struct PlayerView: View {
     }
 }
 
-struct PlayerView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlayerView()
-    }
-}
+//struct PlayerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PlayerView()
+//    }
+//}
 
 enum PlayerViewMetric {
     static let rectangleHeight = 90.0

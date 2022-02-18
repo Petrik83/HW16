@@ -9,33 +9,47 @@ import SwiftUI
 
 struct ThirdHorizontalCell: View {
     var thirdHorizontalCellItem: SectionItem
+    @EnvironmentObject var searchText: SearchText
+    @EnvironmentObject var playerPresenter: PlayerPresenter
 
+    
+    
     var body: some View {
-        HStack {
-            Image(thirdHorizontalCellItem.image)
-                .resizable()
-                .cornerRadius(5)
-                .frame(width: 60, height: 60)
-            VStack{
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(thirdHorizontalCellItem.title)
-                        Text(thirdHorizontalCellItem.subTitle)
-                            .foregroundColor(.secondary)
-                    }
-                    Spacer()
-                    Button {
-                        print("Hello!")
-                    } label: {
-                        Image(systemName: "ellipsis")
-                            .foregroundColor(.primary)
-                    }
-                        .padding(.trailing)
+        ZStack {
+            HStack {
+                Image(thirdHorizontalCellItem.image)
+                    .resizable()
+                    .cornerRadius(5)
+                    .frame(width: 60, height: 60)
+                VStack(alignment: .leading){
+                    Text(thirdHorizontalCellItem.title)
+                    Text(thirdHorizontalCellItem.subTitle)
+                        .foregroundColor(.secondary)
+                    Divider()
                 }
-                Divider()
             }
+            .padding(.leading)
+            
+            HStack {
+                Button {
+                    searchText.searchResult = thirdHorizontalCellItem
+                    playerPresenter.timerSlider = 0
+                } label: {
+                    Rectangle()
+                        .foregroundColor(Color(UIColor.clear))
+                        .frame(height: 60)
+                }
+                Spacer()
+                Button {
+                    print("Hello!")
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .foregroundColor(.primary)
+                }
+                .padding(.trailing)
+            }
+            
         }
-        .padding(.leading)
         
     }
 }

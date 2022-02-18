@@ -12,7 +12,8 @@ struct SearchView: View {
     var columns = [GridItem(.flexible())]
     @EnvironmentObject var picker: PickerChoise
     @EnvironmentObject var searchText: SearchText
-        
+    @EnvironmentObject var playerPresenter: PlayerPresenter
+
     var body: some View {
         VStack {
             Picker(selection: $picker.pickerSelection, label: Text("")) {
@@ -45,6 +46,7 @@ struct SearchView: View {
                     ForEach (Array(Set(searchText.lastSearch)), id:\.self) { index in
                         Button {
                             searchText.searchResult = index
+                            playerPresenter.timerSlider = 0
                             UIApplication.shared.endEditing(true)
                             
                         } label: {
@@ -59,6 +61,7 @@ struct SearchView: View {
                     ForEach(searchHints(incomingData: FindViewItem.findViewItem, text: searchText.searchText), id:\.self) { index in
                         Button {
                             searchText.searchText = index
+                            
                         } label: {
                             HStack(spacing: 0) {
                                 Image(systemName: "magnifyingglass")
@@ -73,6 +76,8 @@ struct SearchView: View {
                     ForEach (searchFilter(incomingData: FindViewItem.findViewItem, text: searchText.searchText), id:\.self) { index in
                         Button {
                             searchText.searchResult = index
+                            playerPresenter.timerSlider = 0
+
                             searchText.lastSearch.append(index)
                             UIApplication.shared.endEditing(true)
                         } label: {

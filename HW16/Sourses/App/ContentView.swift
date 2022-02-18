@@ -6,31 +6,26 @@
 //
 
 import SwiftUI
+    // исправить баг с началом новой песни
 
 class PickerChoise: ObservableObject {
     @Published var pickerSelection = "Apple Music"
 }
-class SearchText: ObservableObject {
-    @Published var searchText = ""
-    @Published var lastSearch = [SectionItem]()
-    @Published var searchResult = SectionItem(image: "mumiytroll", title: "Фантастика", subTitle: "")
-    @Published var showPlayerView: Bool = true
-}
 
 struct ContentView: View {
     @StateObject var picker = PickerChoise()
-    @StateObject var searchText = SearchText()
 
     @State var selection = Set<UUID>()
     @State var shouldEditViewAppiar = false
     @State var showCancelButton: Bool = false
-//    @State var showPlayerView: Bool = true
     @State var queryString = ""
+    
+    @EnvironmentObject var playerPresenter: PlayerPresenter
     
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView {
-                NavigationView{
+                NavigationView {
                     screenSelection(editViewAppiar: shouldEditViewAppiar)
                         .navigationTitle("Медиатека")
                         .navigationBarItems(trailing:
@@ -64,7 +59,6 @@ struct ContentView: View {
                 NavigationView{
                     FindView(showCancelButton: $showCancelButton)
                         .environmentObject(picker)
-                        .environmentObject(searchText)
                         .navigationTitle("Поиск")
                 }
                     .tabItem {
@@ -72,11 +66,12 @@ struct ContentView: View {
                         Text("Поиск")
                     }
             }
-            if searchText.showPlayerView {
+            
+            if playerPresenter.showPlayerView {
                 PlayerView()
                     .padding(.bottom, 49.0)
-                    .environmentObject(searchText)
             }
+                FullScreenPlayer()
         }
     }
     
@@ -90,11 +85,11 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
 
 enum Metric {
     static let playerViewPadding = 45.0
