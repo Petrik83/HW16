@@ -27,7 +27,9 @@ struct StartFindViewCell: View {
                             Text(cellData.title)
                                 .foregroundColor(.white)
                                 .font(Font.body.bold())
+                                .multilineTextAlignment(.leading)
                                 .padding([.bottom, .leading], 10)
+                                
                         }
                     }
             }

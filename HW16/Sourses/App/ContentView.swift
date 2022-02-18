@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+    // исправить баг с началом новой песни
 
 class PickerChoise: ObservableObject {
     @Published var pickerSelection = "Apple Music"
