@@ -13,7 +13,7 @@ struct StartFindViewCell: View {
     var body: some View {
         GeometryReader { geometry in
             NavigationLink {
-                CategoryView(categoryItem: cellData.categoryViewItem, title: cellData.title)
+                CategoryView(title: cellData.title, categoryItem: cellData.categoryViewItem)
                     .navigationBarHidden(true)
             } label: {
                 ZStack(alignment: .leading) {
