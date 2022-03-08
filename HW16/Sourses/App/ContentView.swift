@@ -55,11 +55,13 @@ struct ContentView: View {
                     Text("Радио")
                 }
                 
-                NavigationView{
-                    FindView(showCancelButton: $showCancelButton)
-                        .environmentObject(picker)
-                        .navigationTitle("Поиск")
-                }
+//                NavigationView{
+//                    FindView(showCancelButton: $showCancelButton)
+//                        .environmentObject(picker)
+//                        .navigationTitle("Поиск")
+                FindViewControllerSUI()
+                    .ignoresSafeArea(.all)
+//                }
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Поиск")

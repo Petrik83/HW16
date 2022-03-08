@@ -13,7 +13,7 @@ struct CategoryView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            NavBar(title: title)
+//            NavBar(title: title)
             
             ScrollView(.vertical, showsIndicators: false) {
                 FirstSectionScrollView(item: categoryItem.firstSectionItem)
