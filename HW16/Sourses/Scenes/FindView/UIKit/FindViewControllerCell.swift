@@ -26,7 +26,6 @@ class FindViewControllerCell: UICollectionViewCell {
         title.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         title.lineBreakMode = .byWordWrapping
         title.numberOfLines = 0
-        
     }
     
     required init?(coder: NSCoder) {

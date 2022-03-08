@@ -23,7 +23,6 @@ class FindViewHeader: UICollectionReusableView {
     
     private func viewHierarchy() {
         addSubview(line)
-        
         addSubview(title)
     }
     
@@ -33,7 +32,6 @@ class FindViewHeader: UICollectionReusableView {
         line.trailingAnchor.constraint(equalTo: trailingAnchor, constant: SectionHeaderMetric.lineTrailingArchorConstant).isActive = true
         line.topAnchor.constraint(equalTo: topAnchor).isActive = true
         line.heightAnchor.constraint(equalToConstant: SectionHeaderMetric.lineHeightAnchorConstant).isActive = true
-        
         
         title.translatesAutoresizingMaskIntoConstraints = false
         title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: SectionHeaderMetric.titleLeadingArchorConstant).isActive = true
@@ -45,7 +43,6 @@ class FindViewHeader: UICollectionReusableView {
         title.textColor = .black
         title.font = UIFont.boldSystemFont(ofSize: SectionHeaderMetric.titleFontSize)
         line.backgroundColor = UIColor.systemGray3
-
     }
     
     required init?(coder: NSCoder) {
