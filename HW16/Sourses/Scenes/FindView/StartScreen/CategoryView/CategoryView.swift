@@ -12,9 +12,7 @@ struct CategoryView: View {
     var categoryItem: CategoryViewItem
     
     var body: some View {
-        VStack(alignment: .leading) {
-//            NavBar(title: title)
-            
+        VStack(alignment: .leading) {            
             ScrollView(.vertical, showsIndicators: false) {
                 FirstSectionScrollView(item: categoryItem.firstSectionItem)
                 Divider()
